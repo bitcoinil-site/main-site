@@ -1,7 +1,4 @@
 {
-  "btcil-exchange.p2p.btcil.label": "Bitcoin Israeli",
-  "btcil-exchange.p2p.btcil.url": "https://t.me/btcil",
-  "btcil-exchange.p2p.cantina.url": "https://t.me/BTCIL_CantinaMarket",
   "btcil-exchange.p2p.telegram.label": "BTCiL Exchange on Telegram",
   "btcil-exchange.p2p.telegram.url": "https://t.me/BTCilExchange",
   "businessCard.control.text": "Any business that accepts credit cards or PayPal knows the problem of payments that are later reversed. Chargeback frauds result in limited market reach and increased prices, which in turn penalizes customers. Bitcoin Israel payments are irreversible and secure, meaning that the cost of fraud is no longer pushed onto the shoulders of the merchants.",
@@ -20,7 +17,7 @@
   "exchanges.config.telegram": "Telegram",
   "exchanges.config.vietnam": "Vietnam",
   "exchanges.exchange.asia.vietnam.vindax.description": "VinDax Exchange is an establish Vietnamese exchange supporting various early-stage coins like BTCIL",
-  "exchanges.exchange.asia.vietnam.vindax.logo": "/ 3rd-party-assets/logos/vindax-logo.svg",
+  "exchanges.exchange.asia.vietnam.vindax.logo": "/3rd-party-assets/logos/vindax-logo.svg",
   "exchanges.exchange.asia.vietnam.vindax.name": "VinDax",
   "exchanges.exchange.asia.vietnam.vindax.url": "https://vindax.com/",
   "exchanges.exchange.p2p.telegram.btcil-exchange.description": "BTCiL Exchange on Telegram is the oldest and largest P2P exchange for Bitcoin Israel",

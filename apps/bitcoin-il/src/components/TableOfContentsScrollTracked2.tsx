@@ -786,7 +786,7 @@ type ItemDisplayProps = {
   url: string
   className?: string
 }
-const ItemDisplay = (props) => {
+const ItemDisplay = (props: ItemDisplayProps) => {
   const { name, logo, description, url, className } = props
 
   return (
