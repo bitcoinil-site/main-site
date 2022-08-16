@@ -51,5 +51,29 @@ export const nonMenuRoutes = [
         body={<h1>Buy Body</h1>}
       />
     )
+  },
+  {
+    key: 'translations',
+    path: '/translations',
+    element: (
+      <RoutePage
+        id="translations"
+        title={
+          <FormattedMessage
+            id="page.translations.title"
+            defaultMessage="translations BitcoinIL"
+            description="Choose Wallet"
+          />
+        }
+        subtitle={
+          <FormattedMessage
+            id="page.translations-bitil.subtitle"
+            defaultMessage="translations BitcoinIL"
+            description="Choose Wallet"
+          />
+        }
+        body={<h1>translations Body</h1>}
+      />
+    )
   }
 ]

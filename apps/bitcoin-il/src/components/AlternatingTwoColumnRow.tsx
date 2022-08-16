@@ -13,7 +13,6 @@ const AlternatingTwoColumnRow: React.FC<AlternatingTwoColumnRowProps> = ({
   sideElement
 }) => {
   const even = index % 2 === 1
-  console.log(sideElement)
   return (
     <StyledAlternatingTwoColumnRow
       className={`${even ? 'even' : 'odd'}`}
