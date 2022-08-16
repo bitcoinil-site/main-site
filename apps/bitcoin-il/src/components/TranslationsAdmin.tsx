@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-
-export interface TranslationsAdminProps {}
+import { TranslationsAdminProps } from '../utils/interfaces'
 
 const TranslationsAdmin: React.FC<TranslationsAdminProps> = ({}) => {
   return (

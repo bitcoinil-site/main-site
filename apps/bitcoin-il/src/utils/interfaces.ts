@@ -94,6 +94,8 @@ export interface ThemeContextActions {
   setThemeWithFade: Function
 }
 
+export interface TranslationsAdminProps {}
+
 export interface LanguageAtomValue {
   language: string
 }
