@@ -21,7 +21,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const [isDevModeVisible, setIsDevModeVisible] = useRecoilState(
     isDevModeVisibleState
   )
-  const [isShowHoverInfo, setHoverInfo] = useRecoilState(
+  const [, setHoverInfo] = useRecoilState(
     isTooltipShownOnFormattedMessagesHover
   )
 
