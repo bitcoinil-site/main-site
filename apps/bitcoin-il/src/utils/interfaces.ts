@@ -149,8 +149,10 @@ export interface FAQBodyProps {}
 
 export interface tableOfContentSubheading {
   subHeadingTitle: JSX.Element
-  subHeadingBody: JSX.Element
+  subHeadingBody?: JSX.Element
   hasSubheadings: boolean
+  subHeadings?: tableOfContentSubheading[]
+  isSubmenuParent?: boolean
   key: string
 }
 
@@ -167,6 +169,22 @@ export interface ElementToTrack {
 export interface TableOfContentsScrollTrackedProps {
   items: tableOfContentItem[]
 }
+export interface TableOfContentsScrollTrackedProps2 {
+  categories: Record<string, any>
+}
+export type TableOfContentsScrollTrackedCategory = {
+  [name: string]: TableOfContentsScrollTrackedSubCategory
+}
+export type TableOfContentsScrollTrackedSubCategory = {
+  [name: string]: TableOfContentsScrollTrackedItem
+}
+export type TableOfContentsScrollTrackedItem = {
+  name: string
+  description: string
+  logo: string
+  url: string
+}
+
 
 export interface LogoProps {
   isDark: boolean
@@ -176,8 +194,8 @@ export interface LogoProps {
 export interface tableOfContentItem {
   categoryHeading: JSX.Element
   hasSubheadings: boolean
-  bodyWithoutSubheadings?: { body: Function }[]
-  subHeadings?: tableOfContentSubheading[]
+  body?: () => JSX.Element
+  subHeadings?: tableOfContentItem[]
   key: string
   isSubmenuItem?: boolean
   isSubmenuParent?: boolean
