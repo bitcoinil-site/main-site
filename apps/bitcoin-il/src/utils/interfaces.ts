@@ -288,6 +288,8 @@ export interface VocabularyTerm {
   definition: JSX.Element
 }
 
+export interface DevelopersProps {}
+
 export interface ExchangesBodyProps {}
 
 export interface CoreShortcutBox {
