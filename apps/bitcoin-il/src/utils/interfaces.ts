@@ -89,6 +89,9 @@ export interface BoxProps {
 export interface ThemeContextActions {
   setTheme: (theme: string, variant?: string) => void
   toggleDarkMode: Function
+  getUserThemePreferenceFromLocalStorage: Function
+  storeCurrentThemeToLocalStorage: Function
+  setThemeWithFade: Function
 }
 
 export interface LanguageAtomValue {

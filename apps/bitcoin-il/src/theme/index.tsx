@@ -17,7 +17,13 @@ const BASE_URL = import.meta.env.BASE_URL || '/'
 
 const defaultThemeContext: ThemeContextValue = [
   { themes: [], active: { theme: '', variant: '', isDark: false }, debug: {} },
-  { setTheme: () => {}, toggleDarkMode: () => {} }
+  {
+    setTheme: () => {},
+    toggleDarkMode: () => {},
+    getUserThemePreferenceFromLocalStorage: () => {},
+    storeCurrentThemeToLocalStorage: () => {},
+    setThemeWithFade: () => {}
+  }
 ]
 const ThemeContext = createContext(defaultThemeContext)
 
@@ -85,15 +91,21 @@ const Theme = ({ children }: Props) => {
   }
 
   React.useEffect(() => {
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-      setIsDarkMode(true)
-      actions.setThemeWithFade('bitil-theme', 'bitil-dark', 300)
+    const { theme, variant } = actions.getUserThemePreferenceFromLocalStorage()
+
+    if (theme && variant) {
+      actions.setThemeWithFade(theme, variant)
     } else {
-      actions.setThemeWithFade('bitil-theme', 'bitil-light', 300)
-      setIsDarkMode(false)
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        setIsDarkMode(true)
+        actions.setThemeWithFade('bitil-theme', 'bitil-dark', 300)
+      } else {
+        actions.setThemeWithFade('bitil-theme', 'bitil-light', 300)
+        setIsDarkMode(false)
+      }
     }
   }, [])
 
@@ -111,9 +123,9 @@ const Theme = ({ children }: Props) => {
         variant: variant ? variant : '',
         isDark: pullThemeInfo(theme, variant).isDark
       }
+      actions.storeCurrentThemeToLocalStorage(theme, variant)
       setActiveState(newState)
     },
-
     setThemeWithFade: (
       theme: string,
       variant?: string,
@@ -125,10 +137,23 @@ const Theme = ({ children }: Props) => {
           variant: variant ? variant : '',
           isDark: pullThemeInfo(theme, variant).isDark
         }
+        actions.storeCurrentThemeToLocalStorage(theme, variant)
         setActiveState(newState)
       })
     },
-
+    storeCurrentThemeToLocalStorage: (
+      theme: string,
+      variant: string | undefined
+    ) => {
+      window.localStorage.setItem('theme', theme)
+      window.localStorage.setItem('variant', variant ? variant : '')
+    },
+    getUserThemePreferenceFromLocalStorage: () => {
+      return {
+        theme: window.localStorage.getItem('theme'),
+        variant: window.localStorage.getItem('variant')
+      }
+    },
     toggleDarkMode: () => {
       isDarkMode
         ? actions.setThemeWithFade('bitil-theme', 'bitil-light')
