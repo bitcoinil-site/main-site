@@ -2,17 +2,20 @@ import * as React from 'react'
 import { useRecoilValue } from 'recoil'
 import styled from 'styled-components'
 
-import { exhchanges } from '../data/ExchangesBodyData'
+import { useExchanges } from '../data/ExchangesBodyData'
 import ico_badge from '../img/ico_badge.svg'
 import { isDarkModeState } from '../state/state'
 import { colors } from '../theme/colors'
 import { phoneDevices, smallDevices } from '../utils/breakpoints'
 import { ExchangesBodyProps } from '../utils/interfaces'
 import { FormattedMessage } from './FormattedMessageWithHover'
-import TableOfContentsScrollTracked from './TableOfContentsScrollTracked'
+import TableOfContentsScrollTracked2 from './TableOfContentsScrollTracked2'
 
 const ExchangesBody: React.FC<ExchangesBodyProps> = ({}) => {
   const dark = useRecoilValue(isDarkModeState)
+  const exchanges = useExchanges()
+
+  console.log('loaded exchanges', exchanges)
 
   return (
     <StyledExchangesBody id="ExchangesBody">
@@ -31,7 +34,7 @@ const ExchangesBody: React.FC<ExchangesBodyProps> = ({}) => {
           description={`exhcnages-warning`}
         />
       </div>
-      <TableOfContentsScrollTracked items={exhchanges} />
+      <TableOfContentsScrollTracked2 categories={exchanges} />
     </StyledExchangesBody>
   )
 }
