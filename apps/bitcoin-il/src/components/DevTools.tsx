@@ -8,6 +8,7 @@ import {
   isTooltipShownOnFormattedMessagesHover
 } from '../state/state'
 import { StyledDevToolsProps } from '../utils/interfaces'
+import CustomNavLink from './CustomNavLink'
 
 export default function DevTools() {
   const [isMin, setIsMin] = React.useState(false)
@@ -102,6 +103,9 @@ export default function DevTools() {
         <button className="big-btn-dev-tools" onClick={() => console.clear()}>
           Clear Console
         </button>
+        <CustomNavLink to={`/translations-admin`}>
+          <button className="big-btn-dev-tools">Translations Admin</button>
+        </CustomNavLink>
       </div>
     </StyledDevTools>
   )
@@ -165,6 +169,13 @@ const StyledDevTools = styled.div<StyledDevToolsProps>`
     font-size: 18px;
     padding: 20px;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: opacity 800ms;
+
+    &:hover {
+      opacity: 0.3;
+      transition: opacity 800ms;
+    }
   }
 
   .direction-arrow-btn {

@@ -10,6 +10,7 @@ import { FormattedMessage } from '../components/FormattedMessageWithHover'
 import ChooseWallet from '../components/ChooseWallet'
 import YouShouldKnow from '../components/YouShouldKnow'
 import SpendBitil from '../components/SpendBitil'
+import TranslationsAdmin from '../components/TranslationsAdmin'
 
 const RoutesProvider = () => {
   const intl = useTranslations()
@@ -66,6 +67,7 @@ const RoutesProvider = () => {
           />
         )
       })}
+      {/* English Routes */}
       <Route
         path="choose-your-wallet"
         element={
@@ -114,6 +116,104 @@ const RoutesProvider = () => {
       />
       <Route
         path="spend-bitil"
+        element={
+          <RoutePage
+            id="spend-bitil"
+            title={
+              <FormattedMessage
+                id="page.spend.title.menu"
+                defaultMessage="Spend BitCoin il"
+                description="Spend title"
+              />
+            }
+            subtitle={null}
+            body={<SpendBitil />}
+          />
+        }
+      />
+      <Route
+        path="translations-admin"
+        element={
+          <RoutePage
+            id="translations-admin"
+            title={
+              <FormattedMessage
+                id="page.translations-admin.title.menu"
+                defaultMessage="Translations"
+                description="Translations Header"
+              />
+            }
+            subtitle={<></>}
+            body={<TranslationsAdmin />}
+          />
+        }
+      />
+      {/* Hebrew Routes */}
+      <Route
+        path="/he/choose-your-wallet"
+        element={
+          <RoutePage
+            id="choose-wallet"
+            title={
+              <FormattedMessage
+                id="page.choose-wallet.title.menu"
+                defaultMessage="Choose Your Wallet"
+                description="Choose Wallet"
+              />
+            }
+            subtitle={
+              <FormattedMessage
+                id="page.choose-wallet.subtitle"
+                defaultMessage="Which Wallet Is For You?"
+                description="Choose Wallet"
+              />
+            }
+            body={<ChooseWallet />}
+          />
+        }
+      />
+      <Route
+        path="/he/translations-admin"
+        element={
+          <RoutePage
+            id="translations-admin"
+            title={
+              <FormattedMessage
+                id="page.translations-admin.title.menu"
+                defaultMessage="Translations"
+                description="Translations Header"
+              />
+            }
+            subtitle={<></>}
+            body={<TranslationsAdmin />}
+          />
+        }
+      />
+      <Route
+        path="/he/you-should-know"
+        element={
+          <RoutePage
+            id="you-should-know"
+            title={
+              <FormattedMessage
+                id="page.you-should-know.title.menu"
+                defaultMessage="Some things you need to know"
+                description="You oughtta know!"
+              />
+            }
+            subtitle={
+              <FormattedMessage
+                id="page.you-should-know.subtitle"
+                defaultMessage="If you're getting started with Bitcoin, there are a few things you should know. Bitcoin lets you exchange money and transact in a different way than you normally do. As such, you should take time to inform yourself before using Bitcoin for any serious transaction. Bitcoin should be treated with the same care as your regular wallet, or even more in some cases!"
+                description="You oughtta know subtitle"
+              />
+            }
+            body={<YouShouldKnow />}
+          />
+        }
+      />
+      <Route
+        path="/he/spend-bitil"
         element={
           <RoutePage
             id="spend-bitil"
