@@ -471,7 +471,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
     &-left {
       border-right: 1px solid grey;
-      padding-left: 20vw;
       position: absolute;
       min-height: 100vh;
 
