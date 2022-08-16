@@ -65,6 +65,8 @@ const StyledHeader = styled.div`
     flex-direction: row-reverse;
   }
 
+  background: var(--component-background);
+
   .header {
     &-left {
       display: flex;
@@ -92,7 +94,7 @@ const StyledHeader = styled.div`
     }
 
     &-middle {
-      width: 35vw;
+      width: 100%;
 
       ${phoneDevices} {
         display: none;
