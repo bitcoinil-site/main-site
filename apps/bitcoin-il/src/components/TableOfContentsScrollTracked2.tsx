@@ -27,7 +27,7 @@ const TableOfContentsScrollTracked2: React.FC<
   const [isAtEnd, setIsAtEnd] = React.useState(false)
   const [isAtEndMobile, setIsAtEndMobile] = React.useState(false)
   const [isAtStart, setisAtStart] = React.useState(false)
-  const [isError, setIsError] = React.useState(false)
+  // const [isError, setIsError] = React.useState(false)
   const [elInView, setElInView] = React.useState('')
   const [openSubmenus, setOpenSubmenus] = React.useState<string[]>([])
   const [leftHandWidth, setLeftHandWidth] = React.useState<number>(0)
@@ -47,6 +47,7 @@ const TableOfContentsScrollTracked2: React.FC<
   }, [leftHandColumnRef.current])
 
   React.useEffect(() => {
+    console.log('What is the new El in view?', elInView)
     // take element in view, find the root menu title, and open it
     const elInViewData = getLeftSideElementFromStateUsingKey(elInView)
 
@@ -57,6 +58,10 @@ const TableOfContentsScrollTracked2: React.FC<
         addKeyToOpenSubmenus(elInViewData?.menuParent, true)
     }
   }, [elInView])
+
+  React.useEffect(() => {
+    console.log('What are the openSubMenus? ', openSubmenus)
+  }, [openSubmenus])
 
   // React.useEffect(() => {
   //   // Check for duplicate keys in items
@@ -251,8 +256,8 @@ const TableOfContentsScrollTracked2: React.FC<
             subHeadings: Object.entries(
               subvalue as Record<string, Record<string, string>>
             ).map(([subsubkey, subsubvalue]) => {
-              console.log('sub sub key:', subsubkey)
-              console.log('sub sub value:', subsubvalue)
+              // console.log('sub sub key:', subsubkey)
+              // console.log('sub sub value:', subsubvalue)
 
               return {
                 categoryHeading: (
@@ -288,7 +293,7 @@ const TableOfContentsScrollTracked2: React.FC<
   // if (!items) return <h1>No Items To Show</h1>
   if (!categories) return <h1>No Items To Show</h1>
 
-  if (isError) return <h1>You Have Duplicate Keys In Your Items, Fix That</h1>
+  // if (isError) return <h1>You Have Duplicate Keys In Your Items, Fix That</h1>
 
   return (
     // Left Side First
@@ -658,7 +663,7 @@ const SubHeadings = (props: SubHeadingProps): JSX.Element => {
     scrollToRightSideElement
   } = props
 
-  console.log('WE ARE SUBHEADINGS', item)
+  // console.log('WE ARE SUBHEADINGS', item)
   return (
     <div
       key={i}
