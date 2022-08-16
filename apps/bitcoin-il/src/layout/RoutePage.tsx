@@ -100,4 +100,9 @@ const StyledRoutePage = styled.div<StyledRoutePageProps>`
       color: unset;
     }
   }
+
+  > .routepage-body {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 `
