@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { FormattedMessage } from './FormattedMessageWithHover'
 import styled from 'styled-components'
+import { developersData } from '../data/DevelopersData'
+import { DevelopersProps } from '../utils/interfaces'
 
-export interface DevelopersProps {}
+import { FormattedMessage } from './FormattedMessageWithHover'
+import TableOfContentsScrollTracked from './TableOfContentsScrollTracked'
 
 const Developers: React.FC<DevelopersProps> = ({}) => {
   return (
@@ -14,10 +16,15 @@ const Developers: React.FC<DevelopersProps> = ({}) => {
           description={`developers.heading`}
         />
       </h1>
+      <TableOfContentsScrollTracked items={developersData} />
     </StyledDevelopers>
   )
 }
 
 export default Developers
 
-const StyledDevelopers = styled.div``
+const StyledDevelopers = styled.div`
+  h1 {
+    padding: 200px;
+  }
+`
