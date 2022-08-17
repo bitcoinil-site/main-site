@@ -2,7 +2,11 @@ import { Divider } from 'antd'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { communityCards, NonProfitOrgs } from '../data/CommunityBodyData'
+import {
+  communityCards,
+  NonProfitOrgs,
+  useCommunityData
+} from '../data/CommunityBodyData'
 import { colors } from '../theme/colors'
 import { phoneDevices } from '../utils/breakpoints'
 import { CommunityBodyProps } from '../utils/interfaces'
@@ -11,10 +15,52 @@ import CustomNavLink from './CustomNavLink'
 import { FormattedMessage } from './FormattedMessageWithHover'
 
 const CommunityBody: React.FC<CommunityBodyProps> = ({}) => {
+  const [conf, items] = useCommunityData()
+
+  console.log('Communities Data:', { conf, items })
+
+  const communityCards = React.useMemo(() => {
+    const cards = Object.entries(items.cards).reduce((cardsAcc, [cardId, cardData]) => {
+      console.log('We check card:', `id="${cardId}"`,cardData)
+
+      const card = {
+        img: conf[cardId].icon,
+        title: (
+          <FormattedMessage
+            id={`communities.config.${cardId}.name`}
+            defaultMessage={'Forums'}
+            description={`communities.config.${cardId}.name`}
+          />
+        ),
+
+        text: (
+          <ul className="list-of-links">
+            {Object.entries(cardData as Record<string, Record<string, string>>).map(([key, value]) => {
+              return (
+                <li>
+                  <a href={value.url}>
+                    {value.name}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        ),
+
+        id: 'mobile'
+      }
+      return [...cardsAcc, card]
+    }, [] as any[])
+    console.log('Reduced cards:', cards)
+
+    return cards
+  }, [items, conf])
+  console.log('Cards:', communityCards)
+
   return (
     <StyledCommunityBody id="CommunityBody">
       <CardsDisplay cards={communityCards} />
-      <Divider />
+      {/* <Divider />
       <div className="npos">
         <h1>
           <FormattedMessage
@@ -63,7 +109,7 @@ const CommunityBody: React.FC<CommunityBodyProps> = ({}) => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </StyledCommunityBody>
   )
 }

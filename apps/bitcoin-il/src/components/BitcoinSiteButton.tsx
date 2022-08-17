@@ -14,6 +14,7 @@ export default function SiteButton({
   type = 'default',
   background,
   color,
+  href,
   buttonLinkWrapUrl,
   buttonLinkId
 }: SiteButtonProps) {
@@ -25,6 +26,7 @@ export default function SiteButton({
         background: background ? background : '',
         border: background ? `2px solid ${background}` : ''
       }}
+      href={href}
       type={type}
       onClick={!buttonLinkWrapUrl ? () => onClick() : undefined}
     >

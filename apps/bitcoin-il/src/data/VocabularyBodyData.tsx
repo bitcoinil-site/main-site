@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useIntl } from 'react-intl'
 import { FormattedMessage } from '../components/FormattedMessageWithHover'
 
 import { tableOfContentItem, VocabularyTerm } from '../utils/interfaces'
@@ -320,3 +321,30 @@ export const terms: tableOfContentItem[] = [
     hasSubheadings: false
   }
 ]
+
+export const useVocabulary = () => {
+  const intl = useIntl()
+  console.log('intl.messages:', intl.messages)
+
+  const vocab = React.useMemo(
+    () =>
+      Object.entries(intl.messages).filter(([v]) => !!v.match(/^vocabulary\./)),
+    [intl.messages]
+  )
+  console.log('vocab:', vocab)
+
+  const words = React.useMemo(
+    () =>
+      vocab.sort(([a], [b]) => a > b ? 1 : -1).map(([k, v]) => {
+        const [, word] = k.split('.')
+        console.log('exploring words:', { k, v, word })
+        return {
+          word,
+          definition: v
+        }
+      }),
+    [vocab]
+  )
+
+  return words
+}
