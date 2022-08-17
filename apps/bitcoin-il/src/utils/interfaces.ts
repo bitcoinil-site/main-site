@@ -42,6 +42,7 @@ export interface SiteButtonProps {
   children: React.ReactNode
   color?: string
   background?: string
+  href?: string
   opacity?: string
   transition?: string
   buttonLinkWrapUrl?: string
