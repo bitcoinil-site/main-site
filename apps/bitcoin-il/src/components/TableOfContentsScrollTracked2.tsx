@@ -1,3 +1,4 @@
+import { Divider } from 'antd'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -707,6 +708,7 @@ const SubHeadings = (props: SubHeadingProps): JSX.Element => {
         {item.subHeadings?.map((subItem, i) => {
           return (
             <span
+              id={`span-subItem`}
               className={`toc-scroll-tracked-left-has-subheadings-heading-title left-subtitle ${
                 subItem.key === elInView ? 'active-toc-item' : ''
               }`}
@@ -716,6 +718,7 @@ const SubHeadings = (props: SubHeadingProps): JSX.Element => {
                 scrollToRightSideElement(subItem.key)
               }}
             >
+              👻👻👻
               {subItem.categoryHeading}
               {subItem.hasSubheadings &&
                 subItem.subHeadings?.length &&
@@ -744,7 +747,7 @@ export type ContentSubheadingsProps = {
   i: number
   item: tableOfContentItem
   handleRef: (
-    ref: HTMLParagraphElement | null,
+    ref: HTMLElement | null,
     left: boolean,
     item: tableOfContentItem | tableOfContentSubheading,
     menuParent?: string | null
@@ -758,9 +761,9 @@ const ContentSubHeadings = (props: ContentSubheadingsProps): JSX.Element => {
       <span
         id={item.key}
         ref={(ref) => handleRef(ref, false, item)}
-        className="accented-title toc-scroll-tracked-right-item-heading-has-subheadings right-title submenu-title"
+        className="accented-title toc-scroll-tracked-right-item-heading-has-subheadings right-title submenu-title span-display-block margin-bottom-span"
       >
-        {item.categoryHeading}💣
+        {item.categoryHeading}🦀
       </span>
       <div className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap">
         {item.subHeadings?.map((subItem, i) => {
@@ -769,13 +772,16 @@ const ContentSubHeadings = (props: ContentSubheadingsProps): JSX.Element => {
               <span
                 id={subItem.key}
                 ref={(ref) => handleRef(ref, false, subItem, item.key)}
-                className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-title right-title"
+                className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-title right-title span-display-block"
+                style={{ display: 'block' }}
               >
-                {subItem.categoryHeading}🌤
+                {subItem.categoryHeading}🌤🌤🌤
               </span>
               <span className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-body right-subtitle">
                 {subItem.body ? (
-                  <subItem.body />
+                  <>
+                    <subItem.body />
+                  </>
                 ) : subItem.hasSubheadings ? (
                   <ContentSubHeadings
                     i={i}
@@ -805,20 +811,41 @@ const ItemDisplay = (props: ItemDisplayProps) => {
   const { name, logo, description, url, className } = props
 
   return (
-    <StyledItemDisplay className={`item-display ${className || ''}`}>
-      <div className="item-display-logo">
-        <img src={logo} alt={name} />
-      </div>
-      <h4>{name}</h4>
-      <span>{description}</span>
-      <div className="links">
-        <a href={url}>{url}</a>
-      </div>
-    </StyledItemDisplay>
+    <React.Fragment>
+      <Divider />
+      <StyledItemDisplay className={`item-display ${className || ''}`}>
+        <div className="item-display-logo">
+          <img src={logo} alt={name} />
+        </div>
+        <h4 className="exchange-name-heading-four">{name}</h4>
+        <span className="exchange-description">🍭🍭🍭{description}</span>
+        <div className="links">
+          <a href={url}>{url}</a>
+        </div>
+      </StyledItemDisplay>
+    </React.Fragment>
   )
 }
 
 const StyledItemDisplay = styled.div`
+  #span-subItem {
+  }
+  .span-display-block {
+    display: block;
+  }
+
+  .margin-bottom-span {
+  }
+
+  .exchange-name-heading-four {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .exchange-description {
+    grid-column-start: span 4;
+  }
   &.item-display {
     display: grid;
     grid-template-areas:
