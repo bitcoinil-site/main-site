@@ -2,8 +2,15 @@ import * as React from 'react'
 
 import { ContentSubheadingsProps } from '../utils/interfaces'
 
-const ContentSubHeadings = (props: ContentSubheadingsProps): JSX.Element => {
-  const { i, item, handleRef } = props
+const ContentSubHeadings: React.FC<ContentSubheadingsProps> = ({
+  i,
+  item,
+  handleRef
+}) => {
+  // console.log(item.key, '🦀')
+  if (!item.key) {
+    console.error('❌  No Key Found On An Item - ', item)
+  }
 
   return (
     <React.Fragment key={i}>
@@ -25,9 +32,7 @@ const ContentSubHeadings = (props: ContentSubheadingsProps): JSX.Element => {
                 ref={(ref) => handleRef(ref, false, subItem, item.key)}
                 className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-title right-title span-display-block"
                 style={{ display: 'block' }}
-              >
-                {/* {subItem.categoryHeading}🌤🌤🌤 */}
-              </span>
+              ></span>
               <span className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-body right-subtitle">
                 {subItem.body ? (
                   <>
@@ -35,6 +40,7 @@ const ContentSubHeadings = (props: ContentSubheadingsProps): JSX.Element => {
                   </>
                 ) : subItem.hasSubheadings ? (
                   <ContentSubHeadings
+                    key={`interal-content-subheadings-${i}`}
                     i={i}
                     item={subItem}
                     handleRef={handleRef}

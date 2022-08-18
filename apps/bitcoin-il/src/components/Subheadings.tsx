@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styled from 'styled-components'
 
 import ico_angle from '../img/ico_angle_black.svg'
 import { SubHeadingProps } from '../utils/interfaces'
@@ -13,16 +14,19 @@ const SubHeadings: React.FC<SubHeadingProps> = ({
   isSubmenuOpen,
   scrollToRightSideElement
 }): JSX.Element => {
-  // console.log('🥩🥩🥩 This is a subheading', item)
+  // console.log('🥩🥩🥩 This is a subheading', item.key === 'vindax' ? item : '')
+  console.log(elInView, item.key)
+  console.log(elInView === item.key)
+
   return (
-    <div
+    <StyledSubHeadings
       key={`subhead-${i}`}
       className="toc-scroll-tracked-left-has-subheadings submenu-title"
     >
       <span
-        className={`toc-scroll-tracked-left-has-subheadings-heading left-title ${
+        className={`toc-scroll-tracked-left-has-subheadings-heading left-title flex-displayed-item ${
           item.key === elInView ? 'active-toc-item' : ''
-        }`}
+        } ${!item.isSubmenuParent ? 'indented-submenu-title' : ''}`}
         // @ts-ignore
         // ref={handleRef}
         ref={(ref) => handleRef(ref, true, item)}
@@ -32,7 +36,7 @@ const SubHeadings: React.FC<SubHeadingProps> = ({
         }}
         // key={i}
       >
-        🏈🏈🏈
+        {/* 🏈 */}
         {item.categoryHeading}
         {item.hasSubheadings ? (
           <img
@@ -50,19 +54,23 @@ const SubHeadings: React.FC<SubHeadingProps> = ({
       >
         {item.subHeadings?.map((subItem, i) => {
           return (
-            <span
+            <div
               id={`span-subItem`}
-              className={`toc-scroll-tracked-left-has-subheadings-heading-title left-subtitle ${
-                subItem.key === elInView ? 'active-toc-item' : ''
-              }`}
+              className={`toc-scroll-tracked-left-has-subheadings-heading-title left-subtitle `}
               ref={(ref) => handleRef(ref, true, subItem, item.key)}
               key={`item-sub${i}`}
               onClick={() => {
                 scrollToRightSideElement(subItem.key)
               }}
             >
-              👻👻👻
-              {subItem.categoryHeading}
+              {/* 👻👻👻 */}
+              <div
+                className={`country-header-item ${
+                  subItem.key === elInView ? 'active-toc-item' : ''
+                }`}
+              >
+                {subItem.categoryHeading}
+              </div>
               {subItem.hasSubheadings &&
                 subItem.subHeadings?.length &&
                 subItem.subHeadings.map((subSubItem, ssi) => (
@@ -78,12 +86,27 @@ const SubHeadings: React.FC<SubHeadingProps> = ({
                     scrollToRightSideElement={scrollToRightSideElement}
                   />
                 ))}
-            </span>
+            </div>
           )
         })}
       </div>
-    </div>
+    </StyledSubHeadings>
   )
 }
 
 export default SubHeadings
+
+const StyledSubHeadings = styled.div`
+  .flex-displayed-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .indented-submenu-title {
+    margin-left: 50px;
+  }
+
+  .country-header-item {
+    font-size: 19px;
+  }
+`

@@ -44,8 +44,14 @@ const TableOfContentsScrollTracked2: React.FC<
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
 
   React.useEffect(() => {
-    // console.log({ isStuck })
+    console.log('😂 New IsStuck')
+    console.log({ isBelowZero, isAtEnd, isAtStart, isAtEndMobile })
+    console.log({ isStuck })
   }, [isStuck])
+
+  React.useEffect(() => {
+    console.log({ isAtEnd, isAtEndMobile })
+  }, [isAtEnd, isAtEndMobile])
 
   React.useEffect(() => {
     if (leftHandColumnRef?.current?.clientWidth)
@@ -141,7 +147,7 @@ const TableOfContentsScrollTracked2: React.FC<
     })
 
     if (elsInView[0] && elInView !== elsInView[0].id) {
-      console.log('🌞 Setting elInView to , ', elsInView[0].id)
+      // console.log('🌞 Setting elInView to: ', elsInView[0].id)
       setElInView(elsInView[0].id)
     }
   }
@@ -158,12 +164,14 @@ const TableOfContentsScrollTracked2: React.FC<
     menuParent?: string | null
   ) => {
     if (!ref) return null
-    console.groupCollapsed('-----------------------')
-    console.log('Adding ref for', ref)
-    console.log('On left? ', left)
-    console.log('item: ', item)
-    console.log('MenuParent', menuParent)
-    console.groupEnd()
+    if (left) {
+      // console.groupCollapsed('-----------------------')
+      // console.log('Adding ref for', ref)
+      // console.log('On left? ', left)
+      // console.log('item: ', item)
+      // console.log('MenuParent', menuParent)
+      // console.groupEnd()
+    }
 
     const { hasSubheadings, key } = item
 
@@ -203,6 +211,10 @@ const TableOfContentsScrollTracked2: React.FC<
   }
 
   const addKeyToOpenSubmenus = (key: string, wipe?: boolean) => {
+    // console.log('🏈🏈🏈 Add Ket To Open Subs 🏈🏈🏈')
+    // console.log('key:', key)
+    // console.log('wipe:', wipe)
+
     if (wipe) setOpenSubmenus([key])
     else setOpenSubmenus([...openSubmenus, key])
   }
@@ -233,11 +245,11 @@ const TableOfContentsScrollTracked2: React.FC<
     if (!endRef?.current) return
 
     setIsAtEndMobile(
-      endRef.current.getBoundingClientRect().y < window.innerHeight
+      endRef.current.getBoundingClientRect().y < window.innerHeight - 500
     )
 
     setIsAtEnd(
-      endRef.current?.getBoundingClientRect().y < window.innerHeight - 1000
+      endRef.current?.getBoundingClientRect().y < window.innerHeight - 5000
     )
   }
 
@@ -248,14 +260,17 @@ const TableOfContentsScrollTracked2: React.FC<
 
   const items = React.useMemo(() => {
     return Object.entries(categories).map(([key, value]) => {
-      console.log(key, value)
+      // console.log(key)
+      // console.log(key, value)
       const output = {
         categoryHeading: (
           <FormattedMessage
+            key={key}
             id={`exchanges.config.${key}`}
             defaultMessage={`exchanges.config.${key}`}
           />
         ),
+        key: key,
         hasSubheadings: true,
         isSubmenuParent: true,
         subHeadings: Object.entries(value).map(([subkey, subvalue]) => {
@@ -287,9 +302,9 @@ const TableOfContentsScrollTracked2: React.FC<
                 hasSubheadings: false,
                 isSubmenuParent: false,
                 body: () => {
-                  console.log('🥩🥩🥩🥩', subsubvalue)
+                  // console.log('🥩🥩🥩🥩', subsubvalue)
                   const { name, description, url, logo } = subsubvalue
-                  console.log({ name, description, url, logo })
+                  // console.log({ name, description, url, logo })
                   return (
                     <ItemDisplay
                       name={name}
@@ -358,32 +373,43 @@ const TableOfContentsScrollTracked2: React.FC<
             if (!item.subHeadings) {
               // Here are the headings with no submenus
               return (
-                <span
-                  className={`toc-scroll-tracked-left-item-without-subheadings left-title ${
-                    item.key === elInView ? 'active-toc-item' : ''
-                  }`}
-                  onClick={() => scrollToRightSideElement(item.key)}
-                  ref={(ref) => handleRef(ref, true, item)}
-                  key={i}
-                >
-                  {item.categoryHeading}
-                </span>
+                <div className={`toc-scroll-tracked-left-item-wrap`}>
+                  <span
+                    // DELETE ACTIVE TOC CLASS NAme????????
+                    className={`toc-scroll-tracked-left-item-without-subheadings left-title ${
+                      item.key === elInView ? 'not-active-toc-item' : ''
+                    }`}
+                    onClick={() => scrollToRightSideElement(item.key)}
+                    ref={(ref) => handleRef(ref, true, item)}
+                    key={i}
+                  >
+                    <div
+                      className={item.key === elInView ? 'active-toc-item' : ''}
+                    >
+                      👽️👽️👽️
+                      {item.categoryHeading}
+                    </div>
+                  </span>
+                </div>
               )
             } else {
               // Here are the heading with submenus
 
               return (
-                <SubHeadings
-                  i={i}
-                  key={i}
-                  item={item}
-                  elInView={elInView}
-                  handleRef={handleRef}
-                  handleOpenSubmenu={handleOpenSubmenu}
-                  openSubmenus={openSubmenus}
-                  isSubmenuOpen={isSubmenuOpen}
-                  scrollToRightSideElement={scrollToRightSideElement}
-                />
+                <React.Fragment>
+                  {/* 🧱🧱🧱 */}
+                  <SubHeadings
+                    i={i}
+                    key={i}
+                    item={item}
+                    elInView={elInView}
+                    handleRef={handleRef}
+                    handleOpenSubmenu={handleOpenSubmenu}
+                    openSubmenus={openSubmenus}
+                    isSubmenuOpen={isSubmenuOpen}
+                    scrollToRightSideElement={scrollToRightSideElement}
+                  />
+                </React.Fragment>
               )
             }
           })}
@@ -417,8 +443,6 @@ const TableOfContentsScrollTracked2: React.FC<
               )
             } else {
               return (
-                // has subheadings
-
                 <ContentSubHeadings
                   key={`cont-sub-${i}`}
                   i={i}
@@ -494,7 +518,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
       padding-top: 30px;
       padding-left: 50px;
       padding-right: 5vw;
-      width: 65vw;
+      width: 50vw;
 
       &-item-heading {
         font-size: ${leftTitleSize}px;
@@ -511,6 +535,10 @@ const StyledTableOfContentsScrollTracked = styled.div`
       border-right: 1px solid grey;
       position: absolute;
       min-height: 100vh;
+
+      span {
+        /* width: 100%; */
+      }
 
       &-has-subheadings {
         &-foldable {
@@ -621,7 +649,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
   .active-toc-item {
     border-right: ${borderSize}px solid #00b3f0;
-    background: red;
   }
 
   .foldable-closed {
@@ -667,5 +694,9 @@ const StyledTableOfContentsScrollTracked = styled.div`
         }
       }
     }
+  }
+
+  .toc-scroll-tracked-left-item-wrap {
+    background: dodgerblue;
   }
 `

@@ -4,28 +4,30 @@ import styled from 'styled-components'
 
 import { ItemDisplayProps } from '../utils/interfaces'
 
-const ItemDisplay = (props: ItemDisplayProps) => {
-  const { name, logo, description, url, className } = props
-
-  return (
-    <React.Fragment>
-      <Divider />
-      <StyledItemDisplay className={`item-display ${className || ''}`}>
-        <div className="item-display-logo">
-          <img src={logo} alt={name} />
-        </div>
-        <h4 className="exchange-name-heading-four">{name}</h4>
-        {() => console.log('🇬🇧🇬🇧🇬🇧', description)}
-        <span className="exchange-description">
-          {description ? `🍭🍭🍭${description}` : null}
-        </span>
-        <div className="links">
-          <a href={url}>{url}</a>
-        </div>
-      </StyledItemDisplay>
-    </React.Fragment>
-  )
-}
+const ItemDisplay: React.FC<ItemDisplayProps> = ({
+  name,
+  logo,
+  description,
+  url,
+  className
+}) => (
+  <React.Fragment>
+    <Divider />
+    <StyledItemDisplay className={`item-display ${className || ''}`}>
+      <div className="item-display-logo">
+        <img src={logo} alt={name} />
+      </div>
+      <h4 className="exchange-name-heading-four">{name}</h4>
+      {() => console.log('🇬🇧🇬🇧🇬🇧', description)}
+      <span className="exchange-description">
+        {description ? `🍭🍭🍭${description}` : null}
+      </span>
+      <div className="links">
+        <a href={url}>{url}</a>
+      </div>
+    </StyledItemDisplay>
+  </React.Fragment>
+)
 
 const StyledItemDisplay = styled.div`
   #span-subItem {

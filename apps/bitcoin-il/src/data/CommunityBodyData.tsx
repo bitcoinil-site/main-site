@@ -86,33 +86,35 @@ export const NonProfitOrgs: NonProfitOrg[] = [
   }
 ]
 
-
 export const useCommunityData = () => {
   const intl = useIntl()
 
-  const config =React.useMemo(() => {
-    const baseConf = Object.entries(intl.messages).filter(([v]) => v.match(/^communities\.config\./))
+  const config = React.useMemo(() => {
+    const baseConf = Object.entries(intl.messages).filter(([v]) =>
+      v.match(/^communities\.config\./)
+    )
     console.log('Whats base conf', baseConf)
 
     return baseConf.reduce((acc, [k, v]) => {
-      const [,, parent, key] = k.split('.')
+      const [, , parent, key] = k.split('.')
 
       return {
         ...acc,
         [parent]: {
-          ...acc[parent] || {},
+          ...(acc[parent] || {}),
           [key]: v
         }
       }
-    } , {} as Record<string, any>)
+    }, {} as Record<string, any>)
   }, [intl.messages])
   console.log('Whats config', config)
 
-
   const list = React.useMemo(() => {
-    const base = Object.entries(intl.messages).filter(([v]) => v.match(/^communities\.community\./))
+    const base = Object.entries(intl.messages).filter(([v]) =>
+      v.match(/^communities\.community\./)
+    )
     console.log('whats the base?', base)
-    const domains = base.reduce((domainsAcc, [k, v]) =>  {
+    const domains = base.reduce((domainsAcc, [k, v]) => {
       const ks = k.split('.')
       const domain = ks[2] as string
       console.log('Domain', domain)
@@ -136,14 +138,12 @@ export const useCommunityData = () => {
         }
       }
     }, {} as Record<string, any>)
-    console.log('whats the domains?', domains)
+    // console.log('whats the domains?', domains)
     return domains
-  }, [intl.messages]) 
-
+  }, [intl.messages])
 
   return [config, list]
 }
-
 
 export const communityCards: BodyCard[] = [
   {
@@ -345,5 +345,3 @@ export const communityCards: BodyCard[] = [
     id: `international`
   }
 ]
-
-
