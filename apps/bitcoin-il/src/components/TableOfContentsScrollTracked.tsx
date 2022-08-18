@@ -546,6 +546,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
   .left-title {
     border-right: ${borderSize}px solid transparent;
+    max-width: 210px;
     img {
       transition: margin-right padding-top transform float 400ms;
       float: right;
