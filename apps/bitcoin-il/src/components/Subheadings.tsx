@@ -3,19 +3,17 @@ import * as React from 'react'
 import ico_angle from '../img/ico_angle_black.svg'
 import { SubHeadingProps } from '../utils/interfaces'
 
-const SubHeadings = (props: SubHeadingProps): JSX.Element => {
-  const {
-    i,
-    item,
-    elInView,
-    handleRef,
-    handleOpenSubmenu,
-    openSubmenus,
-    isSubmenuOpen,
-    scrollToRightSideElement
-  } = props
-
-  // console.log('WE ARE SUBHEADINGS', item)
+const SubHeadings: React.FC<SubHeadingProps> = ({
+  i,
+  item,
+  elInView,
+  handleRef,
+  handleOpenSubmenu,
+  openSubmenus,
+  isSubmenuOpen,
+  scrollToRightSideElement
+}): JSX.Element => {
+  // console.log('🥩🥩🥩 This is a subheading', item)
   return (
     <div
       key={`subhead-${i}`}
@@ -34,13 +32,16 @@ const SubHeadings = (props: SubHeadingProps): JSX.Element => {
         }}
         // key={i}
       >
+        🏈🏈🏈
         {item.categoryHeading}
-        <img
-          src={ico_angle}
-          className={`toc-scroll-tracked-left-has-subheadings-heading-arrow ${
-            openSubmenus.includes(item.key) ? 'open-arrow' : ''
-          }`}
-        />
+        {item.hasSubheadings ? (
+          <img
+            src={ico_angle}
+            className={`toc-scroll-tracked-left-has-subheadings-heading-arrow ${
+              openSubmenus.includes(item.key) ? 'open-arrow' : ''
+            }`}
+          />
+        ) : null}
       </span>
       <div
         className={`toc-scroll-tracked-left-has-subheadings-foldable ${
