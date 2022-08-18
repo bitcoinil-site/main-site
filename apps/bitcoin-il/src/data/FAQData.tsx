@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useIntl } from 'react-intl'
 
 import { FormattedMessage } from '../components/FormattedMessageWithHover'
 import { tableOfContentItem } from '../utils/interfaces'
@@ -64,3 +65,34 @@ export const FAQ: tableOfContentItem[] = [
     key: 'is-legal'
   }
 ]
+
+
+export const useFAQs = () => {
+  const intl = useIntl()
+  console.log('intl.messages:', intl.messages)
+
+  const questions = React.useMemo(
+    () =>
+      Object.entries(intl.messages).filter(([v]) => !!v.match(/^faqs\.question/)),
+    [intl.messages]
+  )
+  console.log('questions:', questions)
+
+  const faqs = React.useMemo(
+    () =>
+    questions.reduce((acc, [k, v]) => {
+        const [,, qid, key] = k.split('.')
+        console.log('exploring faqs:', { k, v, qid, key})
+        return {
+          ...acc,
+          [qid]: {
+            ...acc[qid] || {},
+            [key]: v
+          },
+        }
+      }, {} as Record<string, Record<string, string>>),
+    [questions]
+  )
+
+  return faqs
+}
