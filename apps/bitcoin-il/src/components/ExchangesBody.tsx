@@ -15,7 +15,7 @@ const ExchangesBody: React.FC<ExchangesBodyProps> = ({}) => {
   const dark = useRecoilValue(isDarkModeState)
   const exchanges = useExchanges()
 
-  console.log('loaded exchanges', exchanges)
+  // console.log('loaded exchanges', exchanges)
 
   return (
     <StyledExchangesBody id="ExchangesBody">

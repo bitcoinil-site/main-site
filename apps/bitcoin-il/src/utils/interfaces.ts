@@ -87,6 +87,40 @@ export interface BoxProps {
   link: string
 }
 
+export interface SubHeadingProps {
+  i: number
+  item: tableOfContentItem
+  elInView: string
+  handleRef: (
+    ref: HTMLElement | null,
+    left: boolean,
+    item: tableOfContentItem | tableOfContentSubheading,
+    menuParent?: string | null
+  ) => null | undefined
+  handleOpenSubmenu: (key: string) => void
+  openSubmenus: string[]
+  isSubmenuOpen: (key: string) => boolean
+  scrollToRightSideElement: (key: string) => null | undefined
+}
+
+export interface ItemDisplayProps {
+  name: string
+  logo?: string
+  description: string
+  url: string
+  className?: string
+}
+
+export interface ContentSubheadingsProps {
+  i: number
+  item: tableOfContentItem
+  handleRef: (
+    ref: HTMLElement | null,
+    left: boolean,
+    item: tableOfContentItem | tableOfContentSubheading,
+    menuParent?: string | null
+  ) => null | undefined
+}
 export interface ThemeContextActions {
   setTheme: (theme: string, variant?: string) => void
   toggleDarkMode: Function
@@ -185,7 +219,6 @@ export type TableOfContentsScrollTrackedItem = {
   logo: string
   url: string
 }
-
 
 export interface LogoProps {
   isDark: boolean

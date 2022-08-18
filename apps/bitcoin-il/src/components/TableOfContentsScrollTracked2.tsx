@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import ico_angle from '../img/ico_angle_black.svg'
 import { colors } from '../theme/colors'
 import { flashElement, scrollToElement } from '../util/util'
 import {
@@ -17,7 +16,10 @@ import {
   TableOfContentsScrollTrackedProps2,
   tableOfContentSubheading
 } from '../utils/interfaces'
+import ContentSubHeadings from './ContentSubheadings'
 import { FormattedMessage } from './FormattedMessageWithHover'
+import ItemDisplay from './ItemDisplay'
+import SubHeadings from './Subheadings'
 import TOCBurgerMenu from './TableOfContentsScrollTrackedBurger'
 
 const TableOfContentsScrollTracked2: React.FC<
@@ -27,7 +29,7 @@ const TableOfContentsScrollTracked2: React.FC<
   const [isAtEnd, setIsAtEnd] = React.useState(false)
   const [isAtEndMobile, setIsAtEndMobile] = React.useState(false)
   const [isAtStart, setisAtStart] = React.useState(false)
-  const [isError, setIsError] = React.useState(false)
+  // const [isError, setIsError] = React.useState(false)
   const [elInView, setElInView] = React.useState('')
   const [openSubmenus, setOpenSubmenus] = React.useState<string[]>([])
   const [leftHandWidth, setLeftHandWidth] = React.useState<number>(0)
@@ -42,11 +44,16 @@ const TableOfContentsScrollTracked2: React.FC<
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
 
   React.useEffect(() => {
+    // console.log({ isStuck })
+  }, [isStuck])
+
+  React.useEffect(() => {
     if (leftHandColumnRef?.current?.clientWidth)
-      setLeftHandWidth(leftHandColumnRef?.current?.clientWidth)
+      setLeftHandWidth(leftHandColumnRef?.current?.clientWidth - 50)
   }, [leftHandColumnRef.current])
 
   React.useEffect(() => {
+    // console.log('What is the new El in view?', elInView)
     // take element in view, find the root menu title, and open it
     const elInViewData = getLeftSideElementFromStateUsingKey(elInView)
 
@@ -58,33 +65,37 @@ const TableOfContentsScrollTracked2: React.FC<
     }
   }, [elInView])
 
-  // React.useEffect(() => {
-  //   // Check for duplicate keys in items
-  //   const keys: string[] = []
+  React.useEffect(() => {
+    // console.log('What are the openSubMenus? ', openSubmenus)
+  }, [openSubmenus])
 
-  //   items.forEach((item) => {
-  //     if (keys.includes(item.key)) {
-  //       console.error(
-  //         `TableOfContentsScrollTracked found duplicate key: ${item.key}`
-  //       )
-  //       setIsError(true)
-  //     } else {
-  //       keys.push(item.key)
-  //     }
-  //     if (item.subHeadings) {
-  //       item.subHeadings.map((subHeading) => {
-  //         if (keys.includes(subHeading.key)) {
-  //           console.error(
-  //             `TableOfContentsScrollTracked found duplicate key: ${subHeading.key}`
-  //           )
-  //           setIsError(true)
-  //         } else {
-  //           keys.push(subHeading.key)
-  //         }
-  //       })
-  //     }
-  //   })
-  // }, [items])
+  React.useEffect(() => {
+    // Check for duplicate keys in items
+    const keys: string[] = []
+
+    items.forEach((item) => {
+      if (keys.includes(item.key)) {
+        console.error(
+          `TableOfContentsScrollTracked found duplicate key: ${item.key}`
+        )
+        // setIsError(true)
+      } else {
+        keys.push(item.key)
+      }
+      if (item.subHeadings) {
+        item.subHeadings.map((subHeading) => {
+          if (keys.includes(subHeading.key)) {
+            console.error(
+              `TableOfContentsScrollTracked found duplicate key: ${subHeading.key}`
+            )
+            // setIsError(true)
+          } else {
+            keys.push(subHeading.key)
+          }
+        })
+      }
+    })
+  }, [categories])
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -129,7 +140,10 @@ const TableOfContentsScrollTracked2: React.FC<
       }
     })
 
-    if (elsInView[0]) setElInView(elsInView[0].id)
+    if (elsInView[0] && elInView !== elsInView[0].id) {
+      console.log('🌞 Setting elInView to , ', elsInView[0].id)
+      setElInView(elsInView[0].id)
+    }
   }
 
   const isRefStored = (ref: ElementToTrack, left: boolean) => {
@@ -138,12 +152,18 @@ const TableOfContentsScrollTracked2: React.FC<
   }
 
   const handleRef = (
-    ref: HTMLParagraphElement | null,
+    ref: HTMLElement | null,
     left: boolean,
     item: tableOfContentItem | tableOfContentSubheading,
     menuParent?: string | null
   ) => {
     if (!ref) return null
+    console.groupCollapsed('-----------------------')
+    console.log('Adding ref for', ref)
+    console.log('On left? ', left)
+    console.log('item: ', item)
+    console.log('MenuParent', menuParent)
+    console.groupEnd()
 
     const { hasSubheadings, key } = item
 
@@ -228,6 +248,7 @@ const TableOfContentsScrollTracked2: React.FC<
 
   const items = React.useMemo(() => {
     return Object.entries(categories).map(([key, value]) => {
+      console.log(key, value)
       const output = {
         categoryHeading: (
           <FormattedMessage
@@ -251,8 +272,8 @@ const TableOfContentsScrollTracked2: React.FC<
             subHeadings: Object.entries(
               subvalue as Record<string, Record<string, string>>
             ).map(([subsubkey, subsubvalue]) => {
-              console.log('sub sub key:', subsubkey)
-              console.log('sub sub value:', subsubvalue)
+              // console.log('sub sub key:', subsubkey)
+              // console.log('sub sub value:', subsubvalue)
 
               return {
                 categoryHeading: (
@@ -265,7 +286,19 @@ const TableOfContentsScrollTracked2: React.FC<
                 key: subsubkey,
                 hasSubheadings: false,
                 isSubmenuParent: false,
-                body: () => <ItemDisplay {...subsubvalue} />
+                body: () => {
+                  console.log('🥩🥩🥩🥩', subsubvalue)
+                  const { name, description, url, logo } = subsubvalue
+                  console.log({ name, description, url, logo })
+                  return (
+                    <ItemDisplay
+                      name={name}
+                      description={description}
+                      url={url}
+                      logo={logo}
+                    />
+                  )
+                }
                 // bodyWithoutSubheadings: () => <></>,
                 // bodyWithoutSubheadings:  () => (
                 //     <>
@@ -288,7 +321,7 @@ const TableOfContentsScrollTracked2: React.FC<
   // if (!items) return <h1>No Items To Show</h1>
   if (!categories) return <h1>No Items To Show</h1>
 
-  if (isError) return <h1>You Have Duplicate Keys In Your Items, Fix That</h1>
+  // if (isError) return <h1>You Have Duplicate Keys In Your Items, Fix That</h1>
 
   return (
     // Left Side First
@@ -304,13 +337,13 @@ const TableOfContentsScrollTracked2: React.FC<
           isSubmenuOpen={isSubmenuOpen}
           items={items}
           label={
-            <p className="burger-menu-title">
+            <span className="burger-menu-title">
               <FormattedMessage
                 id={`faq.mobile.burger-menu-title`}
                 defaultMessage={`See All`}
                 description={`mobile.burger-menu-title`}
               />
-            </p>
+            </span>
           }
         />
       </div>
@@ -325,7 +358,7 @@ const TableOfContentsScrollTracked2: React.FC<
             if (!item.subHeadings) {
               // Here are the headings with no submenus
               return (
-                <p
+                <span
                   className={`toc-scroll-tracked-left-item-without-subheadings left-title ${
                     item.key === elInView ? 'active-toc-item' : ''
                   }`}
@@ -334,7 +367,7 @@ const TableOfContentsScrollTracked2: React.FC<
                   key={i}
                 >
                   {item.categoryHeading}
-                </p>
+                </span>
               )
             } else {
               // Here are the heading with submenus
@@ -342,6 +375,7 @@ const TableOfContentsScrollTracked2: React.FC<
               return (
                 <SubHeadings
                   i={i}
+                  key={i}
                   item={item}
                   elInView={elInView}
                   handleRef={handleRef}
@@ -369,15 +403,14 @@ const TableOfContentsScrollTracked2: React.FC<
               // no subheadings
 
               return (
-                <React.Fragment key={i}>
-                  <p
+                <React.Fragment key={`no-sub-${i}`}>
+                  <span
                     id={item.key}
                     ref={(ref) => handleRef(ref, false, item)}
-                    key={i}
                     className={`toc-scroll-tracked-right-item-heading right-title accented-title`}
                   >
                     {item.categoryHeading}
-                  </p>
+                  </span>
                   📙
                   {item.body && <item.body />}
                 </React.Fragment>
@@ -386,7 +419,12 @@ const TableOfContentsScrollTracked2: React.FC<
               return (
                 // has subheadings
 
-                <ContentSubHeadings i={i} item={item} handleRef={handleRef} />
+                <ContentSubHeadings
+                  key={`cont-sub-${i}`}
+                  i={i}
+                  item={item}
+                  handleRef={handleRef}
+                />
               )
             }
           })}
@@ -583,6 +621,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
   .active-toc-item {
     border-right: ${borderSize}px solid #00b3f0;
+    background: red;
   }
 
   .foldable-closed {
@@ -627,209 +666,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
           background: red;
         }
       }
-    }
-  }
-`
-
-export type SubHeadingProps = {
-  i: number
-  item: tableOfContentItem
-  elInView: string
-  handleRef: (
-    ref: HTMLParagraphElement | null,
-    left: boolean,
-    item: tableOfContentItem | tableOfContentSubheading,
-    menuParent?: string | null
-  ) => null | undefined
-  handleOpenSubmenu: (key: string) => void
-  openSubmenus: string[]
-  isSubmenuOpen: (key: string) => boolean
-  scrollToRightSideElement: (key: string) => null | undefined
-}
-const SubHeadings = (props: SubHeadingProps): JSX.Element => {
-  const {
-    i,
-    item,
-    elInView,
-    handleRef,
-    handleOpenSubmenu,
-    openSubmenus,
-    isSubmenuOpen,
-    scrollToRightSideElement
-  } = props
-
-  console.log('WE ARE SUBHEADINGS', item)
-  return (
-    <div
-      key={i}
-      className="toc-scroll-tracked-left-has-subheadings submenu-title"
-    >
-      <p
-        className={`toc-scroll-tracked-left-has-subheadings-heading left-title ${
-          item.key === elInView ? 'active-toc-item' : ''
-        }`}
-        // @ts-ignore
-        // ref={handleRef}
-        ref={(ref) => handleRef(ref, true, item)}
-        onClick={() => {
-          handleOpenSubmenu(item.key)
-          // scrollToRightSideElement(item.key)
-        }}
-        key={i}
-      >
-        {item.categoryHeading}
-        <img
-          src={ico_angle}
-          className={`toc-scroll-tracked-left-has-subheadings-heading-arrow ${
-            openSubmenus.includes(item.key) ? 'open-arrow' : ''
-          }`}
-        />
-      </p>
-      <div
-        className={`toc-scroll-tracked-left-has-subheadings-foldable ${
-          isSubmenuOpen(item.key) ? `foldable-open` : `foldable-closed`
-        }`}
-      >
-        {item.subHeadings?.map((subItem, i) => {
-          return (
-            <p
-              className={`toc-scroll-tracked-left-has-subheadings-heading-title left-subtitle ${
-                subItem.key === elInView ? 'active-toc-item' : ''
-              }`}
-              ref={(ref) => handleRef(ref, true, subItem, item.key)}
-              key={i}
-              onClick={() => {
-                scrollToRightSideElement(subItem.key)
-              }}
-            >
-              {subItem.categoryHeading}
-              {subItem.hasSubheadings &&
-                subItem.subHeadings?.length &&
-                subItem.subHeadings.map((subSubItem, ssi) => (
-                  <SubHeadings
-                    i={ssi}
-                    item={subSubItem}
-                    elInView={elInView}
-                    handleRef={handleRef}
-                    handleOpenSubmenu={handleOpenSubmenu}
-                    openSubmenus={openSubmenus}
-                    isSubmenuOpen={isSubmenuOpen}
-                    scrollToRightSideElement={scrollToRightSideElement}
-                  />
-                ))}
-            </p>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
-export type ContentSubheadingsProps = {
-  i: number
-  item: tableOfContentItem
-  handleRef: (
-    ref: HTMLParagraphElement | null,
-    left: boolean,
-    item: tableOfContentItem | tableOfContentSubheading,
-    menuParent?: string | null
-  ) => null | undefined
-}
-const ContentSubHeadings = (props: ContentSubheadingsProps): JSX.Element => {
-  const { i, item, handleRef } = props
-
-  return (
-    <React.Fragment key={i}>
-      <p
-        id={item.key}
-        ref={(ref) => handleRef(ref, false, item)}
-        className="accented-title toc-scroll-tracked-right-item-heading-has-subheadings right-title submenu-title"
-      >
-        {item.categoryHeading}💣
-      </p>
-      <div className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap">
-        {item.subHeadings?.map((subItem, i) => {
-          return (
-            <React.Fragment key={i}>
-              <p
-                id={subItem.key}
-                ref={(ref) => handleRef(ref, false, subItem, item.key)}
-                className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-title right-title"
-              >
-                {subItem.categoryHeading}🌤
-              </p>
-              <p className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap-body right-subtitle">
-                {subItem.body ? (
-                  <subItem.body />
-                ) : subItem.hasSubheadings ? (
-                  <ContentSubHeadings
-                    i={i}
-                    item={subItem}
-                    handleRef={handleRef}
-                  />
-                ) : (
-                  <>No Body</>
-                )}
-              </p>
-            </React.Fragment>
-          )
-        })}
-      </div>
-    </React.Fragment>
-  )
-}
-
-type ItemDisplayProps = {
-  name: string
-  logo?: string
-  description: string
-  url: string
-  className?: string
-}
-const ItemDisplay = (props: ItemDisplayProps) => {
-  const { name, logo, description, url, className } = props
-
-  return (
-    <StyledItemDisplay className={`item-display ${className || ''}`}>
-      <div className="item-display-logo">
-        <img src={logo} alt={name} />
-      </div>
-      <h4>{name}</h4>
-      <p>{description}</p>
-      <div className="links">
-        <a href={url}>{url}</a>
-      </div>
-    </StyledItemDisplay>
-  )
-}
-
-const StyledItemDisplay = styled.div`
-  &.item-display {
-    display: grid;
-    grid-template-areas:
-      'name name name logo'
-      'description description description description'
-      'links links links links';
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 58px 1fr 1fr 1fr;
-
-    > .item-display-logo {
-      grid-area: logo;
-      > img {
-        max-height: 100%;
-        object-fit: contain;
-      }
-    }
-    > h4 {
-      grid-area: name;
-      margin: 0;
-      align-self: end;
-    }
-    > p {
-      grid-area: description;
-    }
-    > .links {
-      grid-area: links;
     }
   }
 `
