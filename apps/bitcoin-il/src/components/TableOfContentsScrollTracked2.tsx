@@ -44,13 +44,13 @@ const TableOfContentsScrollTracked2: React.FC<
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
 
   React.useEffect(() => {
-    console.log('😂 New IsStuck')
-    console.log({ isBelowZero, isAtEnd, isAtStart, isAtEndMobile })
-    console.log({ isStuck })
+    // console.log('😂 New IsStuck')
+    // console.log({ isBelowZero, isAtEnd, isAtStart, isAtEndMobile })
+    // console.log({ isStuck })
   }, [isStuck])
 
   React.useEffect(() => {
-    console.log({ isAtEnd, isAtEndMobile })
+    // console.log({ isAtEnd, isAtEndMobile })
   }, [isAtEnd, isAtEndMobile])
 
   React.useEffect(() => {
@@ -292,7 +292,7 @@ const TableOfContentsScrollTracked2: React.FC<
 
               return {
                 categoryHeading: (
-                  <>{subsubvalue.name}</>
+                  <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
                   // <FormattedMessage
                   //   id={`exchanges.config.${subsubkey}`}
                   //   defaultMessage={`exchanges.config.${subsubkey}`}
@@ -302,7 +302,7 @@ const TableOfContentsScrollTracked2: React.FC<
                 hasSubheadings: false,
                 isSubmenuParent: false,
                 body: () => {
-                  // console.log('🥩🥩🥩🥩', subsubvalue)
+                  // console.log('🥩', subsubvalue)
                   const { name, description, url, logo } = subsubvalue
                   // console.log({ name, description, url, logo })
                   return (
@@ -515,11 +515,11 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
   .toc-scroll-tracked {
     &-right {
-      padding-top: 30px;
+      /* padding-top: 30px;
       padding-left: 50px;
       padding-right: 5vw;
-      width: 50vw;
-
+      width: 50vw; */
+      grid-area: body;
       &-item-heading {
         font-size: ${leftTitleSize}px;
         &-has-subheadings {
