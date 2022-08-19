@@ -324,7 +324,7 @@ export const terms: tableOfContentItem[] = [
 
 export const useVocabulary = () => {
   const intl = useIntl()
-  console.log('intl.messages:', intl.messages)
+  // console.log('intl.messages:', intl.messages)
 
   const vocab = React.useMemo(
     () =>
@@ -332,19 +332,28 @@ export const useVocabulary = () => {
     [intl.messages]
   )
   console.log('vocab:', vocab)
+  console.log(
+    'sort: ',
+    vocab.sort(([a], [b]) => (a > b ? 1 : -1))
+  )
 
   const words = React.useMemo(
     () =>
-      vocab.sort(([a], [b]) => a > b ? 1 : -1).map(([k, v]) => {
-        const [, word] = k.split('.')
-        console.log('exploring words:', { k, v, word })
-        return {
-          word,
-          definition: v
-        }
-      }),
+      vocab
+        .sort(([a], [b]) => (a > b ? 1 : -1))
+        .map(([k, v]) => {
+          console.log([k, v])
+          const [, word] = k.split('.')
+          console.log('exploring words:', { k, v, word })
+          return {
+            word,
+            definition: v
+          }
+        }),
     [vocab]
   )
+
+  console.log('What Are Words?', words)
 
   return words
 }
