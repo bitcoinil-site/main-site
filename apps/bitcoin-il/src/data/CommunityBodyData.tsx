@@ -93,7 +93,7 @@ export const useCommunityData = () => {
     const baseConf = Object.entries(intl.messages).filter(([v]) =>
       v.match(/^communities\.config\./)
     )
-    console.log('Whats base conf', baseConf)
+    // console.log('Whats base conf', baseConf)
 
     return baseConf.reduce((acc, [k, v]) => {
       const [, , parent, key] = k.split('.')
@@ -107,19 +107,19 @@ export const useCommunityData = () => {
       }
     }, {} as Record<string, any>)
   }, [intl.messages])
-  console.log('Whats config', config)
+  // console.log('Whats config', config)
 
   const list = React.useMemo(() => {
     const base = Object.entries(intl.messages).filter(([v]) =>
       v.match(/^communities\.community\./)
     )
-    console.log('whats the base?', base)
+    // console.log('whats the base?', base)
     const domains = base.reduce((domainsAcc, [k, v]) => {
       const ks = k.split('.')
       const domain = ks[2] as string
-      console.log('Domain', domain)
+      // console.log('Domain', domain)
       const region = ks[3]
-      console.log('Region', region)
+      // console.log('Region', region)
 
       const obj = ks[4]
 
