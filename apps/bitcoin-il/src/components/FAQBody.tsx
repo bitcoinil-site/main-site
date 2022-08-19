@@ -13,28 +13,28 @@ const FAQBody: React.FC<FAQBodyProps> = ({}) => {
 
   const items = React.useMemo(() => {
     const ts = Object.entries(faqs).map(([qid, { question, answer }]) => ({
-        categoryHeading: (
-          <FormattedMessage
-            id={`faqs.question.${qid}.question`}
-            defaultMessage={question}
-          />
-        ),
-        hasSubheadings: false,
-        bodyWithoutSubheadings: [
-          {
-            body: (
-              <FormattedMessage
-                id={`faqs.question.${qid}.answer`}
-                defaultMessage={answer}
-              />
-            )
-          }
-        ],
-        key: qid
+      categoryHeading: (
+        <FormattedMessage
+          id={`faqs.question.${qid}.question`}
+          defaultMessage={question}
+        />
+      ),
+      hasSubheadings: false,
+      bodyWithoutSubheadings: [
+        {
+          body: (
+            <FormattedMessage
+              id={`faqs.question.${qid}.answer`}
+              defaultMessage={answer}
+            />
+          )
+        }
+      ],
+      key: qid
     }))
 
     return ts
-  } , [faqs])
+  }, [faqs])
   console.log('items:', items)
 
   return (
