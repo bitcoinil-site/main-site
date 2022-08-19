@@ -20,7 +20,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({
       <h4 className="exchange-name-heading-four">{name}</h4>
       {() => console.log('🇬🇧🇬🇧🇬🇧', description)}
       <span className="exchange-description">
-        {description ? `🍭🍭🍭${description}` : null}
+        {description ? `${description}` : null}
       </span>
       <div className="links">
         <a href={url}>{url}</a>
@@ -53,6 +53,15 @@ const StyledItemDisplay = styled.div`
     grid-column-start: span 4;
   }
   &.item-display {
+    @media only screen and (max-width: 600px) {
+      display: unset;
+
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
     display: grid;
     grid-template-areas:
       'name name name logo'
