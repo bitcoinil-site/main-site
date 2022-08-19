@@ -17,45 +17,48 @@ import { FormattedMessage } from './FormattedMessageWithHover'
 const CommunityBody: React.FC<CommunityBodyProps> = ({}) => {
   const [conf, items] = useCommunityData()
 
-  console.log('Communities Data:', { conf, items })
+  // console.log('Communities Data:', { conf, items })
 
   const communityCards = React.useMemo(() => {
-    const cards = Object.entries(items.cards).reduce((cardsAcc, [cardId, cardData]) => {
-      console.log('We check card:', `id="${cardId}"`,cardData)
+    const cards = Object.entries(items.cards).reduce(
+      (cardsAcc, [cardId, cardData]) => {
+        // console.log('We check card:', `id="${cardId}"`,cardData)
 
-      const card = {
-        img: conf[cardId].icon,
-        title: (
-          <FormattedMessage
-            id={`communities.config.${cardId}.name`}
-            defaultMessage={'Forums'}
-            description={`communities.config.${cardId}.name`}
-          />
-        ),
+        const card = {
+          img: conf[cardId].icon,
+          title: (
+            <FormattedMessage
+              id={`communities.config.${cardId}.name`}
+              defaultMessage={'Forums'}
+              description={`communities.config.${cardId}.name`}
+            />
+          ),
 
-        text: (
-          <ul className="list-of-links">
-            {Object.entries(cardData as Record<string, Record<string, string>>).map(([key, value]) => {
-              return (
-                <li>
-                  <a href={value.url}>
-                    {value.name}
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
-        ),
+          text: (
+            <ul className="list-of-links">
+              {Object.entries(
+                cardData as Record<string, Record<string, string>>
+              ).map(([key, value]) => {
+                return (
+                  <li>
+                    <a href={value.url}>{value.name}</a>
+                  </li>
+                )
+              })}
+            </ul>
+          ),
 
-        id: 'mobile'
-      }
-      return [...cardsAcc, card]
-    }, [] as any[])
-    console.log('Reduced cards:', cards)
+          id: 'mobile'
+        }
+        return [...cardsAcc, card]
+      },
+      [] as any[]
+    )
+    // console.log('Reduced cards:', cards)
 
     return cards
   }, [items, conf])
-  console.log('Cards:', communityCards)
+  // console.log('Cards:', communityCards)
 
   return (
     <StyledCommunityBody id="CommunityBody">
