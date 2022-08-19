@@ -417,9 +417,6 @@ const TableOfContentsScrollTracked2: React.FC<
         {/* LEFT SIDE ABOVE */}
         {/* RIGHT SIDE BELOW */}
         <div
-          style={{
-            marginLeft: `${leftHandWidth}px`
-          }}
           className={`toc-scroll-tracked-right ${
             isStuck ? 'right-when-is-stuck' : ''
           }`}
@@ -491,7 +488,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
       font-weight: bolder;
     }
 
-    ${TOCBreakPointMobile} {
+    ${TOCBreakPointOne} {
       display: flex;
       padding-left: 15px;
     }
@@ -502,13 +499,18 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .scroll-track-toc-main {
-    display: flex;
+    display: grid;
+    grid-template-columns: [toc] 40% [body] 60%;
+
+    ${TOCBreakPointOne} {
+      padding: 50px;
+      display: flex;
+    }
 
     ${TOCBreakPointMobile} {
       flex-direction: column;
 
       .toc-scroll-tracked-right {
-        width: 90vw;
       }
     }
   }
@@ -532,9 +534,31 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
 
     &-left {
-      border-right: 1px solid grey;
       position: absolute;
       min-height: 100vh;
+      width: 22%;
+      border-right: 1px solid var(--text-color-secondary);
+      overflow: scroll;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ${TOCBreakPointOne} {
+        background: orange;
+        display: none;
+      }
+
+      &::-webkit-scrollbar-track {
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 200px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        opacity: 1;
+      }
 
       span {
         /* width: 100%; */
@@ -573,22 +597,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
     position: fixed;
     top: 0;
     height: 100vh;
-    overflow: scroll;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 200px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-      opacity: 1;
-    }
   }
 
   .left-title {
@@ -630,6 +638,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
     top: 0;
 
     ${TOCBreakPointOne} {
+      background: blue;
     }
   }
 
@@ -638,7 +647,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
     font-weight: bolder;
 
     ${phoneDevices} {
-      padding-top: 80px;
+      /* padding-top: 80px; */
     }
   }
 
@@ -690,7 +699,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
           margin: auto;
         }
         .mobile-toc {
-          background: red;
         }
       }
     }
