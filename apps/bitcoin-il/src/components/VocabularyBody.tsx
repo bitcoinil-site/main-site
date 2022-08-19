@@ -11,7 +11,7 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
 
   const terms = React.useMemo(() => {
     const ts = words.map(({ word, definition }) => {
-      console.log({ word, definition })
+      // console.log({ word, definition })
       return {
         categoryHeading: <>{word}</>,
         bodyWithoutSubheadings: [
