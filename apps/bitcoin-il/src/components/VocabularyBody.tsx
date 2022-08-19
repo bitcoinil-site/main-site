@@ -10,27 +10,38 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
   console.log('words from useVoca:', words)
 
   const terms = React.useMemo(() => {
-    const ts = words.map(({ word, definition }) => ({
-      categoryHeading: <>{word}</>,
-      bodyWithoutSubheadings: [
-        {
-          body: definition
-        }
-      ],
-      key: word,
-      hasSubheadings: false
-    }  as tableOfContentItem))
+    const ts = words.map(({ word, definition }) => {
+      console.log({ word, definition })
+      return {
+        categoryHeading: <>{word}</>,
+        bodyWithoutSubheadings: [
+          {
+            body: definition
+          }
+        ],
+        key: word,
+        hasSubheadings: false
+      } as tableOfContentItem
+    })
+
+    console.log('👽️ What is ts?', ts)
 
     return ts
   }, [words])
 
   const spacer = {
-    categoryHeading: <><hr /></>,
+    categoryHeading: (
+      <>
+        <hr />
+      </>
+    )
   } as tableOfContentItem
 
   return (
     <StyledVocabulary id="Vocabulary">
-      <TableOfContentsScrollTracked items={[...terms, spacer, ...oldTerms]} />
+      <TableOfContentsScrollTracked
+        keyValues={[...terms, spacer, ...oldTerms]}
+      />
     </StyledVocabulary>
   )
 }
