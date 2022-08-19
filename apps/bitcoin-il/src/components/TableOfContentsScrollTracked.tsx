@@ -6,3 +6,5 @@ const TableOfContentsScrollTracked: React.FC<
 > = ({}) => {
   return <h1>Deprecated, Use TableOfContentsScrollTracked2 </h1>
 }
+
+export default TableOfContentsScrollTracked
