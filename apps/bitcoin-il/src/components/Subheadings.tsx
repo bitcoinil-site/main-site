@@ -15,8 +15,8 @@ const SubHeadings: React.FC<SubHeadingProps> = ({
   scrollToRightSideElement
 }): JSX.Element => {
   // console.log('🥩🥩🥩 This is a subheading', item.key === 'vindax' ? item : '')
-  console.log(elInView, item.key)
-  console.log(elInView === item.key)
+  // console.log(elInView, item.key)
+  // console.log(elInView === item.key)
 
   return (
     <StyledSubHeadings
