@@ -20,7 +20,8 @@ const ContentSubHeadings: React.FC<ContentSubheadingsProps> = ({
           ref={(ref) => handleRef(ref, false, item)}
           className="accented-title toc-scroll-tracked-right-item-heading-has-subheadings right-title submenu-title span-display-block margin-bottom-span"
         >
-          {item.categoryHeading}🦀
+          {item.categoryHeading}
+          {/* 🦀 */}
         </span>
       </div>
       <div className="toc-scroll-tracked-right-item-heading-has-subheadings-subheadings-wrap">
