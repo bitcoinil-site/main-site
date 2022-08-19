@@ -227,7 +227,7 @@ const BurgerWrap = styled.div`
       background: transparent;
       top: 60px;
       left: 0;
-      width: 100vw;
+      width: 95vw;
 
       &.closed {
         height: 0;

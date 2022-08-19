@@ -37,7 +37,6 @@ const StyledItemDisplay = styled.div`
   }
 
   .margin-bottom-wrap {
-    background: yellow;
   }
 
   .margin-bottom-span {

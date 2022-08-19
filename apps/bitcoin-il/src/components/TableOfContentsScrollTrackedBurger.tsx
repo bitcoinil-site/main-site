@@ -1,7 +1,9 @@
+import { Divider } from 'antd'
 import * as React from 'react'
 import styled from 'styled-components'
 
 import ico_angle from '../img/ico_angle.svg'
+import { colors } from '../theme/colors'
 import { TOCBurgerMenuProps } from '../utils/interfaces'
 
 const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
@@ -55,6 +57,7 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
                 key={i}
               >
                 {item.categoryHeading}
+                <Divider />
               </p>
             )
           } else {
@@ -250,8 +253,8 @@ const BurgerWrap = styled.div`
     overflow: hidden;
     width: 65vw;
     position: absolute;
-    background-color: black;
-    color: white;
+    background-color: var(--dropdown-border);
+    color: ${colors.accent};
     top: 62px;
     left: 0;
     transition: height 400ms;
@@ -264,6 +267,21 @@ const BurgerWrap = styled.div`
       transition: height 400ms;
       transition: padding 400ms;
       height: 100vh;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 200px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -282,7 +300,7 @@ const BurgerWrap = styled.div`
 
   .toc-scroll-tracked-left-item-without-subheadings,
   .left-title {
-    border-bottom: 1px solid grey;
+    /* border-bottom: 1px solid red; */
   }
 
   .TOC-Burger-End-Hitbox {

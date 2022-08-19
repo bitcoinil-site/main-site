@@ -468,10 +468,6 @@ const borderSize = 5
 const StyledTableOfContentsScrollTracked = styled.div`
   margin-top: 100px;
 
-  ${phoneDevices} {
-    margin-bottom: 65px;
-  }
-
   .mobile-toc {
     background-color: ${colors.accent};
     color: white;
