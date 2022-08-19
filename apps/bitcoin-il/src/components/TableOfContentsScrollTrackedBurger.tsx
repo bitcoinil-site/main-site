@@ -94,6 +94,7 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
                   }`}
                 >
                   {item.subHeadings.map((subItem, i) => {
+                    console.log('🍄 what is subitem?', subItem)
                     return (
                       <p
                         className={`toc-scroll-tracked-left-has-subheadings-heading-title left-subtitle ${
@@ -106,7 +107,16 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
                           scrollToRightSideElement(subItem.key)
                         }}
                       >
-                        {subItem.subHeadingTitle}
+                        {subItem.categoryHeading}
+                        {subItem.subHeadings ? (
+                          <div className="toc-mobile-subheading-subheadings">
+                            {subItem.subHeadings.map((sub, iiii) => {
+                              console.log({ iiii })
+                              console.log('🏈 what is sub sub?', sub)
+                              return <span>{sub.categoryHeading}</span>
+                            })}
+                          </div>
+                        ) : null}
                       </p>
                     )
                   })}
@@ -144,6 +154,13 @@ const BurgerWrap = styled.div`
     z-index: 5;
     opacity: 0;
     cursor: pointer;
+  }
+
+  .toc-mobile-subheading-subheadings {
+    margin-left: 50px;
+    span {
+      display: block;
+    }
   }
 
   .hamburger-lines {
