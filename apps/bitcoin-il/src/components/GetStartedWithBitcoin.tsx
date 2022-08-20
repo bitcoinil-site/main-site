@@ -1,3 +1,4 @@
+import { Button } from 'antd'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -8,7 +9,6 @@ import worldwide from '../img/main_ico_worldwide.svg'
 import { colors } from '../theme/colors'
 import { phoneDevices } from '../utils/breakpoints'
 import { GetStartedWithBitcoinProps } from '../utils/interfaces'
-import SiteButton from './BitcoinSiteButton'
 import CustomNavLink from './CustomNavLink'
 import { FormattedMessage } from './FormattedMessageWithHover'
 
@@ -65,13 +65,13 @@ const GetStartedWithBitcoin: React.FC<GetStartedWithBitcoinProps> = ({}) => {
         </div>
         <div className="get-started-body-bottom">
           <CustomNavLink to="/getting-started">
-            <SiteButton>
+            <Button type="primary" size='large'>
               <FormattedMessage
                 id={`exchanges.getting-stared-label`}
                 defaultMessage={`Get Started with BitCoin Il`}
                 description={`getting-stared-label`}
               />
-            </SiteButton>
+            </Button>
           </CustomNavLink>
         </div>
       </div>
@@ -138,16 +138,6 @@ const StyledGetStartedWithBitcoin = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
-        button {
-          background: black;
-          color: white;
-          border: 2px solid black;
-
-          &:hover {
-            border: 2px solid black;
-          }
-        }
       }
     }
   }
