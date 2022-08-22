@@ -82,7 +82,7 @@ const StyledRoutePage = styled.div<StyledRoutePageProps>`
     }
 
     .routepage-subtitle {
-      color: #505050;
+      color: var(--heading-color);
     }
   }
 
