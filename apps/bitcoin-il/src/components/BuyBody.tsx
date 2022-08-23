@@ -9,7 +9,7 @@ const BuyBody: React.FC<BuyBodyProps> = ({}) => {
   return (
     <StyledBuyBody id="BuyBody">
       <Card>
-        <h1>**** THIS NEEDS TO BE A WIDGET TO BUY BTCIl</h1>
+        <h1>{`<Widget />`}</h1>
       </Card>
       <p className="buy-body-message">
         <FormattedMessage

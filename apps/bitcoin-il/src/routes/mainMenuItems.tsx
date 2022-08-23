@@ -643,7 +643,7 @@ export const mainMenuItems: MainMenuItem[] = [
             description={`mainMenu.development.label`}
           />
         ),
-        key: 'development',
+        key: 'developers',
         element: (
           <RoutePage
             id="development"
