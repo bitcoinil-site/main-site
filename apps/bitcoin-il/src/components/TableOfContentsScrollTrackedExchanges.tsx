@@ -533,9 +533,10 @@ const StyledTableOfContentsScrollTracked = styled.div`
     &-left {
       position: absolute;
       min-height: 100vh;
-      width: 22%;
+      /* width: 22%; */
       /* border-right: 1px solid var(--text-color-secondary); */
       overflow: scroll;
+      padding: 30px;
 
       &::-webkit-scrollbar {
         width: 8px;

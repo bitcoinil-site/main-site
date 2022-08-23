@@ -100,6 +100,7 @@ const StyledSubHeadings = styled.div`
   .flex-displayed-item {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
   }
 
   .indented-submenu-title {
@@ -108,5 +109,6 @@ const StyledSubHeadings = styled.div`
 
   .country-header-item {
     font-size: 19px;
+    margin-bottom: 10px;
   }
 `
