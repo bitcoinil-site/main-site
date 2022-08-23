@@ -499,8 +499,8 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
   }
 
   .scroll-track-toc-main {
-    display: grid;
-    grid-template-columns: [toc] 40% [body] 60%;
+    /* display: grid; */
+    /* grid-template-columns: [toc] 40% [body] 60%; */
 
     ${TOCBreakPointOne} {
       padding: 50px;
@@ -534,11 +534,11 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
     }
 
     &-left {
-      position: absolute;
+      /* position: absolute;
       min-height: 100vh;
       width: 22%;
       border-right: 1px solid var(--text-color-secondary);
-      overflow: scroll;
+      overflow: scroll; */
 
       &::-webkit-scrollbar {
         width: 8px;
@@ -594,9 +594,9 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
   }
 
   .stuck {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    height: 100vh;
+    height: 100vh; */
   }
 
   .left-title {
@@ -630,15 +630,6 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
 
     ${TOCBreakPointMobile} {
       margin-top: 0;
-    }
-  }
-
-  .right-when-is-stuck {
-    position: sticky;
-    top: 0;
-
-    ${TOCBreakPointOne} {
-      background: blue;
     }
   }
 
@@ -705,6 +696,6 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
   }
 
   .toc-scroll-tracked-left-item-wrap {
-    background: dodgerblue;
+    /* background: dodgerblue; */
   }
 `

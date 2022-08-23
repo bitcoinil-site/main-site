@@ -497,8 +497,8 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .scroll-track-toc-main {
-    display: grid;
-    grid-template-columns: [toc] 40% [body] 60%;
+    display: flex;
+    flex-direction: column;
 
     ${TOCBreakPointOne} {
       /* padding: 50px; */
@@ -532,11 +532,12 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
 
     &-left {
-      position: absolute;
+      /* position: absolute;
       min-height: 100vh;
       width: 38%;
       border-right: 1px solid var(--text-color-secondary);
-      overflow: scroll;
+      overflow: scroll; */
+      margin-bottom: 200px;
 
       &::-webkit-scrollbar {
         width: 8px;
@@ -592,9 +593,9 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .stuck {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    height: 100vh;
+    height: 100vh; */
   }
 
   .left-title {
@@ -631,15 +632,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
   }
 
-  .right-when-is-stuck {
-    position: sticky;
-    top: 0;
-
-    ${TOCBreakPointOne} {
-      background: blue;
-    }
-  }
-
   .right-title {
     font-size: ${rightTitleSize}px;
     font-weight: bolder;
@@ -655,16 +647,16 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .active-toc-item {
-    border-right: ${borderSize}px solid #00b3f0;
+    /* border-right: ${borderSize}px solid #00b3f0; */
   }
 
   .foldable-closed {
-    height: 0;
-    overflow: hidden;
+    /* height: 0; */
+    /* overflow: hidden; */
   }
 
   .foldable-open {
-    height: unset;
+    /* height: unset; */
   }
 
   .open-arrow {
