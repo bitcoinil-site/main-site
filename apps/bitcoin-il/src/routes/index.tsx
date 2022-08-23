@@ -233,23 +233,6 @@ const RoutesProvider = () => {
           />
         }
       />
-      <Route
-        path="/test-toc"
-        element={
-          <RoutePage
-            id="spend-bitil"
-            title={
-              <FormattedMessage
-                id="page.test-toc.title.menu"
-                defaultMessage="Test TOC"
-                description="Spend title"
-              />
-            }
-            subtitle={null}
-            body={<TheTOCExport items={exch} />}
-          />
-        }
-      />
       <Route path="*" element={<NotARoute />} />
     </Routes>
   )

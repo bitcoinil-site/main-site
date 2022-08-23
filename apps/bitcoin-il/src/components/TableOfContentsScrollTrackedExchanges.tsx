@@ -287,8 +287,8 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
             subHeadings: Object.entries(
               subvalue as Record<string, Record<string, string>>
             ).map(([subsubkey, subsubvalue]) => {
-              // console.log('sub sub key:', subsubkey)
-              // console.log('sub sub value:', subsubvalue)
+              console.log('sub sub key:', subsubkey)
+              console.log('sub sub value:', subsubvalue)
 
               return {
                 categoryHeading: (

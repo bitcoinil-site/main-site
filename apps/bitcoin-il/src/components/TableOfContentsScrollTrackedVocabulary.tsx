@@ -22,7 +22,7 @@ import ItemDisplay from './ItemDisplay'
 import SubHeadings from './Subheadings'
 import TOCBurgerMenu from './TableOfContentsScrollTrackedBurger'
 
-const TableOfContentsScrollTrackedVocabulary: React.FC<
+const TableOfContentsScrollTrackedExchanges: React.FC<
   TableOfContentsScrollTrackedProps2
 > = ({ categories }) => {
   const [isBelowZero, setIsBelowZero] = React.useState(false)
@@ -42,8 +42,6 @@ const TableOfContentsScrollTrackedVocabulary: React.FC<
   const leftSideElements = React.useRef<(ElementToTrack | null)[]>([])
 
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
-
-  console.log('😹😹😹', categories)
 
   React.useEffect(() => {
     // console.log('😂 New IsStuck')
@@ -263,7 +261,7 @@ const TableOfContentsScrollTrackedVocabulary: React.FC<
   const items = React.useMemo(() => {
     return Object.entries(categories).map(([key, value]) => {
       // console.log(key)
-      // console.log(key, value)
+      console.log({ key, value })
       const output = {
         categoryHeading: (
           <FormattedMessage
@@ -294,11 +292,11 @@ const TableOfContentsScrollTrackedVocabulary: React.FC<
 
               return {
                 categoryHeading: (
-                  <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
-                  // <FormattedMessage
-                  //   id={`exchanges.config.${subsubkey}`}
-                  //   defaultMessage={`exchanges.config.${subsubkey}`}
-                  // />
+                  // <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
+                  <FormattedMessage
+                    id={`exchanges.config.${subsubkey}`}
+                    defaultMessage={`exchanges.config.${subsubkey}`}
+                  />
                 ),
                 key: subsubkey,
                 hasSubheadings: false,
@@ -342,28 +340,7 @@ const TableOfContentsScrollTrackedVocabulary: React.FC<
 
   return (
     // Left Side First
-    <StyledTableOfContentsScrollTrackedVocab id="TableOfContentsScrollTracked">
-      <div className="top-hitbox" ref={startRef} />
-      <div className={`mobile-toc ${isStuck ? 'mobile-toc-stuck' : ''}`}>
-        <TOCBurgerMenu
-          elInView={elInView}
-          scrollToRightSideElement={scrollToRightSideElement}
-          handleRef={handleRef}
-          handleOpenSubmenu={handleOpenSubmenu}
-          openSubmenus={openSubmenus}
-          isSubmenuOpen={isSubmenuOpen}
-          items={items}
-          label={
-            <span className="burger-menu-title">
-              <FormattedMessage
-                id={`faq.mobile.burger-menu-title`}
-                defaultMessage={`See All`}
-                description={`mobile.burger-menu-title`}
-              />
-            </span>
-          }
-        />
-      </div>
+    <StyledTableOfContentsScrollTracked id="TableOfContentsScrollTracked">
       <div className="scroll-track-toc-main">
         <div
           className={`toc-scroll-tracked-left ${
@@ -371,7 +348,9 @@ const TableOfContentsScrollTrackedVocabulary: React.FC<
           } ${isAtEndMobile ? 'hide-left-on-mobile-end' : ''}`}
           ref={leftHandColumnRef}
         >
+          <h1>Table Of Contents</h1>
           {items.map((item, i) => {
+            console.log('👽️', item)
             if (!item.subHeadings) {
               // Here are the headings with no submenus
               return (
@@ -454,11 +433,11 @@ const TableOfContentsScrollTrackedVocabulary: React.FC<
         </div>
       </div>
       <div className="end-hitbox" ref={endRef} />
-    </StyledTableOfContentsScrollTrackedVocab>
+    </StyledTableOfContentsScrollTracked>
   )
 }
 
-export default TableOfContentsScrollTrackedVocabulary
+export default TableOfContentsScrollTrackedExchanges
 
 const leftTitleSize = 19
 const leftSubtitleSize = 16
@@ -467,11 +446,11 @@ const rightBodySize = 20
 
 const borderSize = 5
 
-const StyledTableOfContentsScrollTrackedVocab = styled.div`
+const StyledTableOfContentsScrollTracked = styled.div`
   margin-top: 100px;
 
   .mobile-toc {
-    background-color: ${colors.accent};
+    /* background-color: ${colors.accent};
     color: white;
     display: none;
     position: sticky;
@@ -493,18 +472,23 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
 
     ${TOCBreakPointMobileHeight} {
       display: flex;
-    }
+    } */
 
-    display: none; // hide TOC on mobile
+    display: none; // hide always
   }
 
   .scroll-track-toc-main {
-    /* display: grid; */
-    /* grid-template-columns: [toc] 40% [body] 60%; */
+    display: flex;
+    flex-direction: column;
+    padding: 80px;
+
+    @media only screen and (max-width: 460px) {
+      padding: 35px;
+    }
 
     ${TOCBreakPointOne} {
-      padding: 50px;
-      display: flex;
+      /* padding: 50px; */
+      /* display: flex; */
     }
 
     ${TOCBreakPointMobile} {
@@ -536,17 +520,22 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
     &-left {
       /* position: absolute;
       min-height: 100vh;
-      width: 22%;
+      width: 38%;
       border-right: 1px solid var(--text-color-secondary);
       overflow: scroll; */
+      margin-bottom: 200px;
+
+      @media only screen and (max-width: 460px) {
+        display: none;
+      }
 
       &::-webkit-scrollbar {
         width: 8px;
       }
 
       ${TOCBreakPointOne} {
-        background: orange;
-        display: none;
+        /* background: orange; */
+        /* display: none; */
       }
 
       &::-webkit-scrollbar-track {
@@ -648,16 +637,16 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
   }
 
   .active-toc-item {
-    border-right: ${borderSize}px solid #00b3f0;
+    /* border-right: ${borderSize}px solid #00b3f0; */
   }
 
   .foldable-closed {
-    height: 0;
-    overflow: hidden;
+    /* height: 0; */
+    /* overflow: hidden; */
   }
 
   .foldable-open {
-    height: unset;
+    /* height: unset; */
   }
 
   .open-arrow {
@@ -696,6 +685,6 @@ const StyledTableOfContentsScrollTrackedVocab = styled.div`
   }
 
   .toc-scroll-tracked-left-item-wrap {
-    /* background: dodgerblue; */
+    background: dodgerblue;
   }
 `
