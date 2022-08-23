@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { FAQ, useFAQs } from '../data/FAQData'
 import { FAQBodyProps } from '../utils/interfaces'
+import TableOfContentsScrollTrackedExchanges from './TableOfContentsScrollTrackedExchanges'
 // import TableOfContentsScrollTracked from './TableOfContentsScrollTracked'
 
 const FAQBody: React.FC<FAQBodyProps> = ({}) => {
@@ -40,6 +41,10 @@ const FAQBody: React.FC<FAQBodyProps> = ({}) => {
   return (
     <StyledFAQBodyTwo id="FAQBodyTwo">
       {/* <TableOfContentsScrollTracked items={items} /> */}
+      <TableOfContentsScrollTrackedExchanges
+        categories={items}
+        itemsOrganized={true}
+      />
     </StyledFAQBodyTwo>
   )
 }
