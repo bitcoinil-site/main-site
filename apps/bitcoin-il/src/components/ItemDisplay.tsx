@@ -86,6 +86,10 @@ const StyledItemDisplay = styled.div`
     }
     > .links {
       grid-area: links;
+
+      a {
+        word-wrap: break-word;
+      }
     }
   }
 `

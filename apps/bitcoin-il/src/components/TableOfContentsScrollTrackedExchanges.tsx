@@ -369,6 +369,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
           } ${isAtEndMobile ? 'hide-left-on-mobile-end' : ''}`}
           ref={leftHandColumnRef}
         >
+          <h1>Table Of Contents</h1>
           {items.map((item, i) => {
             if (!item.subHeadings) {
               // Here are the headings with no submenus
@@ -499,6 +500,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
   .scroll-track-toc-main {
     display: flex;
     flex-direction: column;
+    padding: 80px;
 
     ${TOCBreakPointOne} {
       /* padding: 50px; */
@@ -538,6 +540,10 @@ const StyledTableOfContentsScrollTracked = styled.div`
       border-right: 1px solid var(--text-color-secondary);
       overflow: scroll; */
       margin-bottom: 200px;
+
+      @media only screen and (max-width: 460px) {
+        display: none;
+      }
 
       &::-webkit-scrollbar {
         width: 8px;
