@@ -11,10 +11,14 @@ import ChooseWallet from '../components/ChooseWallet'
 import YouShouldKnow from '../components/YouShouldKnow'
 import SpendBitil from '../components/SpendBitil'
 import TranslationsAdmin from '../components/TranslationsAdmin'
+import TheTOCExport from '../components/TOCFromCodePen'
+import { useExchanges } from '../data/ExchangesBodyData'
 
 const RoutesProvider = () => {
   const intl = useTranslations()
   const { availableLanguages } = intl
+
+  const exch = useExchanges()
   return (
     <Routes>
       {availableLanguages.map((lang, ii) => {
@@ -226,6 +230,23 @@ const RoutesProvider = () => {
             }
             subtitle={null}
             body={<SpendBitil />}
+          />
+        }
+      />
+      <Route
+        path="/test-toc"
+        element={
+          <RoutePage
+            id="spend-bitil"
+            title={
+              <FormattedMessage
+                id="page.test-toc.title.menu"
+                defaultMessage="Test TOC"
+                description="Spend title"
+              />
+            }
+            subtitle={null}
+            body={<TheTOCExport items={exch} />}
           />
         }
       />
