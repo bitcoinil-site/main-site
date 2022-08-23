@@ -82,12 +82,12 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
                   key={i}
                 >
                   {item.categoryHeading}
-                  <img
+                  {/* <img
                     src={ico_angle}
                     className={`toc-scroll-tracked-left-has-subheadings-heading-arrow ${
                       openSubmenus.includes(item.key) ? 'open-arrow' : ''
                     }`}
-                  />
+                  /> */}
                 </p>
                 <div
                   className={`toc-scroll-tracked-left-has-subheadings-foldable ${

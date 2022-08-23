@@ -38,14 +38,14 @@ const SubHeadings: React.FC<SubHeadingProps> = ({
       >
         {/* 🏈 */}
         {item.categoryHeading}
-        {item.hasSubheadings ? (
+        {/* {item.hasSubheadings ? (
           <img
             src={ico_angle}
             className={`toc-scroll-tracked-left-has-subheadings-heading-arrow ${
               openSubmenus.includes(item.key) ? 'open-arrow' : ''
             }`}
           />
-        ) : null}
+        ) : null} */}
       </span>
       <div
         className={`toc-scroll-tracked-left-has-subheadings-foldable ${

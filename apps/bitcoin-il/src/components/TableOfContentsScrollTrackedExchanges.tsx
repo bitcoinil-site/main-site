@@ -485,8 +485,8 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
 
     ${TOCBreakPointOne} {
-      display: flex;
-      padding-left: 15px;
+      /* display: flex; */
+      /* padding-left: 15px; */
     }
 
     ${TOCBreakPointMobileHeight} {
@@ -498,7 +498,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
     display: grid;
     grid-template-columns: [toc] 40% [body] 60%;
 
-    ${TOCBreakPointOne} {
+    ${phoneDevices} {
       padding: 50px;
       display: flex;
     }
@@ -518,6 +518,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
       padding-right: 5vw;
       width: 50vw; */
       grid-area: body;
+
       &-item-heading {
         font-size: ${leftTitleSize}px;
         &-has-subheadings {
@@ -533,15 +534,14 @@ const StyledTableOfContentsScrollTracked = styled.div`
       position: absolute;
       min-height: 100vh;
       width: 22%;
-      border-right: 1px solid var(--text-color-secondary);
+      /* border-right: 1px solid var(--text-color-secondary); */
       overflow: scroll;
 
       &::-webkit-scrollbar {
         width: 8px;
       }
 
-      ${TOCBreakPointOne} {
-        background: orange;
+      ${phoneDevices} {
         display: none;
       }
 
@@ -590,13 +590,13 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .stuck {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    height: 100vh;
+    height: 100vh; */
   }
 
   .left-title {
-    border-right: ${borderSize}px solid transparent;
+    /* border-right: ${borderSize}px solid transparent; */
     img {
       transition: margin-right padding-top transform float 400ms;
       float: right;
@@ -630,11 +630,11 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .right-when-is-stuck {
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
 
     ${TOCBreakPointOne} {
-      background: blue;
+      /* background: blue; */
     }
   }
 
@@ -653,16 +653,16 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .active-toc-item {
-    border-right: ${borderSize}px solid #00b3f0;
+    /* border-right: ${borderSize}px solid #00b3f0; */
   }
 
   .foldable-closed {
-    height: 0;
-    overflow: hidden;
+    /* height: 0; */
+    /* overflow: hidden; */
   }
 
   .foldable-open {
-    height: unset;
+    /* height: unset; */
   }
 
   .open-arrow {
