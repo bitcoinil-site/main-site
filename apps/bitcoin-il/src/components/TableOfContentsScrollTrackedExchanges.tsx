@@ -287,8 +287,8 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
             subHeadings: Object.entries(
               subvalue as Record<string, Record<string, string>>
             ).map(([subsubkey, subsubvalue]) => {
-              console.log('sub sub key:', subsubkey)
-              console.log('sub sub value:', subsubvalue)
+              // console.log('sub sub key:', subsubkey)
+              // console.log('sub sub value:', subsubvalue)
 
               return {
                 categoryHeading: (
@@ -369,7 +369,6 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
           } ${isAtEndMobile ? 'hide-left-on-mobile-end' : ''}`}
           ref={leftHandColumnRef}
         >
-          <h1>Table Of Contents</h1>
           {items.map((item, i) => {
             if (!item.subHeadings) {
               // Here are the headings with no submenus
@@ -470,7 +469,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
   margin-top: 100px;
 
   .mobile-toc {
-    /* background-color: ${colors.accent};
+    background-color: ${colors.accent};
     color: white;
     display: none;
     position: sticky;
@@ -492,23 +491,16 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
     ${TOCBreakPointMobileHeight} {
       display: flex;
-    } */
-
-    display: none; // hide always
+    }
   }
 
   .scroll-track-toc-main {
-    display: flex;
-    flex-direction: column;
-    padding: 80px;
-
-    @media only screen and (max-width: 460px) {
-      padding: 35px;
-    }
+    display: grid;
+    grid-template-columns: [toc] 40% [body] 60%;
 
     ${TOCBreakPointOne} {
-      /* padding: 50px; */
-      /* display: flex; */
+      padding: 50px;
+      display: flex;
     }
 
     ${TOCBreakPointMobile} {
@@ -538,24 +530,19 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
 
     &-left {
-      /* position: absolute;
+      position: absolute;
       min-height: 100vh;
-      width: 38%;
+      width: 22%;
       border-right: 1px solid var(--text-color-secondary);
-      overflow: scroll; */
-      margin-bottom: 200px;
-
-      @media only screen and (max-width: 460px) {
-        display: none;
-      }
+      overflow: scroll;
 
       &::-webkit-scrollbar {
         width: 8px;
       }
 
       ${TOCBreakPointOne} {
-        /* background: orange; */
-        /* display: none; */
+        background: orange;
+        display: none;
       }
 
       &::-webkit-scrollbar-track {
@@ -603,9 +590,9 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .stuck {
-    /* position: fixed;
+    position: fixed;
     top: 0;
-    height: 100vh; */
+    height: 100vh;
   }
 
   .left-title {
@@ -642,6 +629,15 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
   }
 
+  .right-when-is-stuck {
+    position: sticky;
+    top: 0;
+
+    ${TOCBreakPointOne} {
+      background: blue;
+    }
+  }
+
   .right-title {
     font-size: ${rightTitleSize}px;
     font-weight: bolder;
@@ -657,16 +653,16 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .active-toc-item {
-    /* border-right: ${borderSize}px solid #00b3f0; */
+    border-right: ${borderSize}px solid #00b3f0;
   }
 
   .foldable-closed {
-    /* height: 0; */
-    /* overflow: hidden; */
+    height: 0;
+    overflow: hidden;
   }
 
   .foldable-open {
-    /* height: unset; */
+    height: unset;
   }
 
   .open-arrow {
