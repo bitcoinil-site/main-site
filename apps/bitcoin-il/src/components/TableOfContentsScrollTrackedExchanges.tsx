@@ -469,7 +469,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
   margin-top: 100px;
 
   .mobile-toc {
-    background-color: ${colors.accent};
+    /* background-color: ${colors.accent};
     color: white;
     display: none;
     position: sticky;
@@ -491,7 +491,9 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
     ${TOCBreakPointMobileHeight} {
       display: flex;
-    }
+    } */
+
+    display: none; // hide always
   }
 
   .scroll-track-toc-main {
@@ -499,8 +501,8 @@ const StyledTableOfContentsScrollTracked = styled.div`
     grid-template-columns: [toc] 40% [body] 60%;
 
     ${TOCBreakPointOne} {
-      padding: 50px;
-      display: flex;
+      /* padding: 50px; */
+      /* display: flex; */
     }
 
     ${TOCBreakPointMobile} {
@@ -532,7 +534,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
     &-left {
       position: absolute;
       min-height: 100vh;
-      width: 22%;
+      width: 38%;
       border-right: 1px solid var(--text-color-secondary);
       overflow: scroll;
 
@@ -541,8 +543,8 @@ const StyledTableOfContentsScrollTracked = styled.div`
       }
 
       ${TOCBreakPointOne} {
-        background: orange;
-        display: none;
+        /* background: orange; */
+        /* display: none; */
       }
 
       &::-webkit-scrollbar-track {

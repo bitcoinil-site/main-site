@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { terms as oldTerms, useVocabulary } from '../data/VocabularyBodyData'
 import { tableOfContentItem, VocabularyProps } from '../utils/interfaces'
-import TableOfContentsScrollTracked from './TableOfContentsScrollTracked'
+import TableOfContentsScrollTrackedVocabulary from './TableOfContentsScrollTrackedVocabulary'
 
 const Vocabulary: React.FC<VocabularyProps> = ({}) => {
   const words = useVocabulary()
@@ -39,8 +39,8 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
 
   return (
     <StyledVocabulary id="Vocabulary">
-      <TableOfContentsScrollTracked
-        keyValues={[...terms, spacer, ...oldTerms]}
+      <TableOfContentsScrollTrackedVocabulary
+        categories={[...terms, spacer, ...oldTerms]}
       />
     </StyledVocabulary>
   )

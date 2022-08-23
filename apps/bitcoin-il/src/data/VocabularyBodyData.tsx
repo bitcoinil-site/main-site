@@ -331,20 +331,20 @@ export const useVocabulary = () => {
       Object.entries(intl.messages).filter(([v]) => !!v.match(/^vocabulary\./)),
     [intl.messages]
   )
-  console.log('vocab:', vocab)
-  console.log(
-    'sort: ',
-    vocab.sort(([a], [b]) => (a > b ? 1 : -1))
-  )
+  // console.log('vocab:', vocab)
+  // console.log(
+  //   'sort: ',
+  //   vocab.sort(([a], [b]) => (a > b ? 1 : -1))
+  // )
 
   const words = React.useMemo(
     () =>
       vocab
         .sort(([a], [b]) => (a > b ? 1 : -1))
         .map(([k, v]) => {
-          console.log([k, v])
+          // console.log([k, v])
           const [, word] = k.split('.')
-          console.log('exploring words:', { k, v, word })
+          // console.log('exploring words:', { k, v, word })
           return {
             word,
             definition: v
@@ -353,7 +353,7 @@ export const useVocabulary = () => {
     [vocab]
   )
 
-  console.log('What Are Words?', words)
+  // console.log('What Are Words?', words)
 
   return words
 }

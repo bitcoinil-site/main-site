@@ -13,6 +13,7 @@ import {
   ElementToTrack,
   HTMLElementWithID,
   tableOfContentItem,
+  TableOfContentsScrollTrackedProps2,
   tableOfContentSubheading
 } from '../utils/interfaces'
 import ContentSubHeadings from './ContentSubheadings'
@@ -21,11 +22,9 @@ import ItemDisplay from './ItemDisplay'
 import SubHeadings from './Subheadings'
 import TOCBurgerMenu from './TableOfContentsScrollTrackedBurger'
 
-const TableOfContentsScrollTrackedVocab: React.FC<
-  TableOfContentsScrollTrackedExchangesProps
-> = ({ categories, keyValues }) => {
-  if (!categories && !keyValues) return null
-
+const TableOfContentsScrollTrackedVocabulary: React.FC<
+  TableOfContentsScrollTrackedProps2
+> = ({ categories }) => {
   const [isBelowZero, setIsBelowZero] = React.useState(false)
   const [isAtEnd, setIsAtEnd] = React.useState(false)
   const [isAtEndMobile, setIsAtEndMobile] = React.useState(false)
@@ -33,6 +32,7 @@ const TableOfContentsScrollTrackedVocab: React.FC<
   // const [isError, setIsError] = React.useState(false)
   const [elInView, setElInView] = React.useState('')
   const [openSubmenus, setOpenSubmenus] = React.useState<string[]>([])
+  const [leftHandWidth, setLeftHandWidth] = React.useState<number>(0)
 
   const leftHandColumnRef = React.createRef<HTMLDivElement>()
   const endRef = React.createRef<HTMLDivElement>()
@@ -43,6 +43,8 @@ const TableOfContentsScrollTrackedVocab: React.FC<
 
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
 
+  console.log('😹😹😹', categories)
+
   React.useEffect(() => {
     // console.log('😂 New IsStuck')
     // console.log({ isBelowZero, isAtEnd, isAtStart, isAtEndMobile })
@@ -52,6 +54,11 @@ const TableOfContentsScrollTrackedVocab: React.FC<
   React.useEffect(() => {
     // console.log({ isAtEnd, isAtEndMobile })
   }, [isAtEnd, isAtEndMobile])
+
+  React.useEffect(() => {
+    if (leftHandColumnRef?.current?.clientWidth)
+      setLeftHandWidth(leftHandColumnRef?.current?.clientWidth - 50)
+  }, [leftHandColumnRef.current])
 
   React.useEffect(() => {
     // console.log('What is the new El in view?', elInView)
@@ -71,17 +78,10 @@ const TableOfContentsScrollTrackedVocab: React.FC<
   }, [openSubmenus])
 
   React.useEffect(() => {
-    if (!keyValues) return
-    console.log('🚨 Run because KVPs')
-  }, [keyValues])
-
-  React.useEffect(() => {
-    if (!categories) return
-    console.log('🚨 Run because categories')
     // Check for duplicate keys in items
     const keys: string[] = []
 
-    items?.forEach((item) => {
+    items.forEach((item) => {
       if (keys.includes(item.key)) {
         console.error(
           `TableOfContentsScrollTracked found duplicate key: ${item.key}`
@@ -261,118 +261,88 @@ const TableOfContentsScrollTrackedVocab: React.FC<
   }
 
   const items = React.useMemo(() => {
-    if (categories) {
-      return Object.entries(categories).map(([key, value]) => {
-        // console.log(key)
-        // console.log(key, value)
-        const output = {
-          categoryHeading: (
-            <FormattedMessage
-              key={key}
-              id={`exchanges.config.${key}`}
-              defaultMessage={`exchanges.config.${key}`}
-            />
-          ),
-          key: key,
-          hasSubheadings: true,
-          isSubmenuParent: true,
-          subHeadings: Object.entries(value).map(([subkey, subvalue]) => {
-            const suboutput = {
-              categoryHeading: (
-                <FormattedMessage
-                  id={`exchanges.config.${subkey}`}
-                  defaultMessage={`exchanges.config.${subkey}`}
-                />
-              ),
-              key: subkey,
-              isSubmenuParent: true,
-              hasSubheadings: true,
-              subHeadings: Object.entries(
-                subvalue as Record<string, Record<string, string>>
-              ).map(([subsubkey, subsubvalue]) => {
-                // console.log('sub sub key:', subsubkey)
-                // console.log('sub sub value:', subsubvalue)
+    return Object.entries(categories).map(([key, value]) => {
+      // console.log(key)
+      // console.log(key, value)
+      const output = {
+        categoryHeading: (
+          <FormattedMessage
+            key={key}
+            id={`exchanges.config.${key}`}
+            defaultMessage={`exchanges.config.${key}`}
+          />
+        ),
+        key: key,
+        hasSubheadings: true,
+        isSubmenuParent: true,
+        subHeadings: Object.entries(value).map(([subkey, subvalue]) => {
+          const suboutput = {
+            categoryHeading: (
+              <FormattedMessage
+                id={`exchanges.config.${subkey}`}
+                defaultMessage={`exchanges.config.${subkey}`}
+              />
+            ),
+            key: subkey,
+            isSubmenuParent: true,
+            hasSubheadings: true,
+            subHeadings: Object.entries(
+              subvalue as Record<string, Record<string, string>>
+            ).map(([subsubkey, subsubvalue]) => {
+              // console.log('sub sub key:', subsubkey)
+              // console.log('sub sub value:', subsubvalue)
 
-                return {
-                  categoryHeading: (
-                    <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
-                    // <FormattedMessage
-                    //   id={`exchanges.config.${subsubkey}`}
-                    //   defaultMessage={`exchanges.config.${subsubkey}`}
-                    // />
-                  ),
-                  key: subsubkey,
-                  hasSubheadings: false,
-                  isSubmenuParent: false,
-                  body: () => {
-                    // console.log('🥩', subsubvalue)
-                    const { name, description, url, logo } = subsubvalue
-                    // console.log({ name, description, url, logo })
-                    return (
-                      <ItemDisplay
-                        name={name}
-                        description={description}
-                        url={url}
-                        logo={logo}
-                      />
-                    )
-                  }
-                  // bodyWithoutSubheadings: () => <></>,
-                  // bodyWithoutSubheadings:  () => (
-                  //     <>
-                  //       Sup body of "{subsubkey}" - value: "{subsubvalue}"
-                  //     </>
-                  //   )
-                  //         isSubmenuParent: false,
-                  //         hasSubheadings: false
+              return {
+                categoryHeading: (
+                  <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
+                  // <FormattedMessage
+                  //   id={`exchanges.config.${subsubkey}`}
+                  //   defaultMessage={`exchanges.config.${subsubkey}`}
+                  // />
+                ),
+                key: subsubkey,
+                hasSubheadings: false,
+                isSubmenuParent: false,
+                body: () => {
+                  // console.log('🥩', subsubvalue)
+                  const { name, description, url, logo } = subsubvalue
+                  // console.log({ name, description, url, logo })
+                  return (
+                    <ItemDisplay
+                      name={name}
+                      description={description}
+                      url={url}
+                      logo={logo}
+                    />
+                  )
                 }
-              })
-            }
-            return suboutput as tableOfContentItem
-          })
-        } as tableOfContentItem
+                // bodyWithoutSubheadings: () => <></>,
+                // bodyWithoutSubheadings:  () => (
+                //     <>
+                //       Sup body of "{subsubkey}" - value: "{subsubvalue}"
+                //     </>
+                //   )
+                //         isSubmenuParent: false,
+                //         hasSubheadings: false
+              }
+            })
+          }
+          return suboutput as tableOfContentItem
+        })
+      } as tableOfContentItem
 
-        return output
-      })
-    } else {
-      console.log('🇫🇷Run because keyvalues')
-      console.log('', keyValues)
-
-      return keyValues.map((item: any) => {
-        console.log('🇬🇧', item)
-        // console.log(key)
-        // console.log(key, value)
-
-        const { key } = item
-
-        // return
-        const output = {
-          categoryHeading: (
-            <FormattedMessage
-              key={key}
-              id={`exchanges.config.${key}`}
-              defaultMessage={`exchanges.config.${key}`}
-            />
-          ),
-          key: key,
-          hasSubheadings: true,
-          isSubmenuParent: true,
-          subHeadings: undefined
-        } as tableOfContentItem
-        console.log('🦀 What is output?', output)
-        return output
-      })
-    }
-  }, [categories, keyValues])
+      return output
+    })
+  }, [categories])
 
   // if (!items) return <h1>No Items To Show</h1>
-  if (!categories && !keyValues) return <h1>No Items To Show</h1>
+  if (!categories) return <h1>No Items To Show</h1>
 
   // if (isError) return <h1>You Have Duplicate Keys In Your Items, Fix That</h1>
 
   return (
     // Left Side First
-    <StyledTableOfContentsScrollTracked id="TableOfContentsScrollTracked">
+    <StyledTableOfContentsScrollTrackedVocab id="TableOfContentsScrollTracked">
       <div className="top-hitbox" ref={startRef} />
       <div className={`mobile-toc ${isStuck ? 'mobile-toc-stuck' : ''}`}>
         <TOCBurgerMenu
@@ -401,8 +371,7 @@ const TableOfContentsScrollTrackedVocab: React.FC<
           } ${isAtEndMobile ? 'hide-left-on-mobile-end' : ''}`}
           ref={leftHandColumnRef}
         >
-          {items?.map((item, i) => {
-            console.log(item)
+          {items.map((item, i) => {
             if (!item.subHeadings) {
               // Here are the headings with no submenus
               return (
@@ -454,10 +423,9 @@ const TableOfContentsScrollTrackedVocab: React.FC<
             isStuck ? 'right-when-is-stuck' : ''
           }`}
         >
-          {items?.map((item, i) => {
+          {items.map((item, i) => {
             if (!item.subHeadings) {
               // no subheadings
-              console.log('👻👻👻👻', item)
 
               return (
                 <React.Fragment key={`no-sub-${i}`}>
@@ -466,7 +434,6 @@ const TableOfContentsScrollTrackedVocab: React.FC<
                     ref={(ref) => handleRef(ref, false, item)}
                     className={`toc-scroll-tracked-right-item-heading right-title accented-title`}
                   >
-                    ♥️
                     {item.categoryHeading}
                   </span>
                   📙
@@ -474,7 +441,6 @@ const TableOfContentsScrollTrackedVocab: React.FC<
                 </React.Fragment>
               )
             } else {
-              console.log('😾 I Went Here')
               return (
                 <ContentSubHeadings
                   key={`cont-sub-${i}`}
@@ -488,11 +454,11 @@ const TableOfContentsScrollTrackedVocab: React.FC<
         </div>
       </div>
       <div className="end-hitbox" ref={endRef} />
-    </StyledTableOfContentsScrollTracked>
+    </StyledTableOfContentsScrollTrackedVocab>
   )
 }
 
-export default TableOfContentsScrollTrackedVocab
+export default TableOfContentsScrollTrackedVocabulary
 
 const leftTitleSize = 19
 const leftSubtitleSize = 16
@@ -501,7 +467,7 @@ const rightBodySize = 20
 
 const borderSize = 5
 
-const StyledTableOfContentsScrollTracked = styled.div`
+const StyledTableOfContentsScrollTrackedVocab = styled.div`
   margin-top: 100px;
 
   .mobile-toc {
@@ -528,6 +494,8 @@ const StyledTableOfContentsScrollTracked = styled.div`
     ${TOCBreakPointMobileHeight} {
       display: flex;
     }
+
+    display: none; // hide TOC on mobile
   }
 
   .scroll-track-toc-main {
