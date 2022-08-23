@@ -25,6 +25,7 @@ import TOCBurgerMenu from './TableOfContentsScrollTrackedBurger'
 const TableOfContentsScrollTrackedExchanges: React.FC<
   TableOfContentsScrollTrackedProps2
 > = ({ categories }) => {
+  console.log('--- Important Commit ---')
   const [isBelowZero, setIsBelowZero] = React.useState(false)
   const [isAtEnd, setIsAtEnd] = React.useState(false)
   const [isAtEndMobile, setIsAtEndMobile] = React.useState(false)
@@ -42,6 +43,8 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
   const leftSideElements = React.useRef<(ElementToTrack | null)[]>([])
 
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
+
+  console.log('🦀', { categories })
 
   React.useEffect(() => {
     // console.log('😂 New IsStuck')
@@ -302,7 +305,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
                 hasSubheadings: false,
                 isSubmenuParent: false,
                 body: () => {
-                  // console.log('🥩', subsubvalue)
+                  console.log('🥩', subsubvalue)
                   const { name, description, url, logo } = subsubvalue
                   // console.log({ name, description, url, logo })
                   return (

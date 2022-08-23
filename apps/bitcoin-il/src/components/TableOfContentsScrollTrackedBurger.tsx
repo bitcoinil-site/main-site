@@ -97,7 +97,7 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
                   }`}
                 >
                   {item.subHeadings.map((subItem, i) => {
-                    console.log('🍄 what is subitem?', subItem)
+                    // console.log('🍄 what is subitem?', subItem)
                     return (
                       <p
                         className={`toc-scroll-tracked-left-has-subheadings-heading-title left-subtitle ${
@@ -114,8 +114,8 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
                         {subItem.subHeadings ? (
                           <div className="toc-mobile-subheading-subheadings">
                             {subItem.subHeadings.map((sub, iiii) => {
-                              console.log({ iiii })
-                              console.log('🏈 what is sub sub?', sub)
+                              // console.log({ iiii })
+                              // console.log('🏈 what is sub sub?', sub)
                               return <span>{sub.categoryHeading}</span>
                             })}
                           </div>

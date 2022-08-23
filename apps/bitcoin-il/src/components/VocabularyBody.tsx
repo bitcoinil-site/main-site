@@ -3,11 +3,12 @@ import styled from 'styled-components'
 
 import { terms as oldTerms, useVocabulary } from '../data/VocabularyBodyData'
 import { tableOfContentItem, VocabularyProps } from '../utils/interfaces'
+import TableOfContentsScrollTrackedExchanges from './TableOfContentsScrollTrackedExchanges'
 import TableOfContentsScrollTrackedVocabulary from './TableOfContentsScrollTrackedVocabulary'
 
 const Vocabulary: React.FC<VocabularyProps> = ({}) => {
   const words = useVocabulary()
-  console.log('words from useVoca:', words)
+  // console.log('words from useVoca:', words)
 
   const terms = React.useMemo(() => {
     const ts = words.map(({ word, definition }) => {
@@ -24,7 +25,7 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
       } as tableOfContentItem
     })
 
-    console.log('👽️ What is ts?', ts)
+    // console.log('👽️ What is ts?', ts)
 
     return ts
   }, [words])
@@ -39,7 +40,7 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
 
   return (
     <StyledVocabulary id="Vocabulary">
-      <TableOfContentsScrollTrackedVocabulary
+      <TableOfContentsScrollTrackedExchanges
         categories={[...terms, spacer, ...oldTerms]}
       />
     </StyledVocabulary>
