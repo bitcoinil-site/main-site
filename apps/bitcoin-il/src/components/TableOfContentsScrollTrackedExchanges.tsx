@@ -502,6 +502,10 @@ const StyledTableOfContentsScrollTracked = styled.div`
     flex-direction: column;
     padding: 80px;
 
+    @media only screen and (max-width: 460px) {
+      padding: 35px;
+    }
+
     ${TOCBreakPointOne} {
       /* padding: 50px; */
       /* display: flex; */
