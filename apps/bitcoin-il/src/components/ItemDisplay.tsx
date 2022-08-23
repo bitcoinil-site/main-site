@@ -10,24 +10,30 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({
   description,
   url,
   className
-}) => (
-  <React.Fragment>
-    <Divider />
-    <StyledItemDisplay className={`item-display ${className || ''}`}>
-      <div className="item-display-logo">
-        <img src={logo} alt={name} />
-      </div>
-      <h4 className="exchange-name-heading-four">{name}</h4>
-      {() => console.log('🇬🇧🇬🇧🇬🇧', description)}
-      <span className="exchange-description">
-        {description ? `${description}` : null}
-      </span>
-      <div className="links">
-        <a href={url}>{url}</a>
-      </div>
-    </StyledItemDisplay>
-  </React.Fragment>
-)
+}) => {
+  return (
+    <React.Fragment>
+      <Divider />
+      <StyledItemDisplay className={`item-display ${className || ''}`}>
+        {logo ? (
+          <div className="item-display-logo">
+            <img src={logo} alt={name || 'This is a logo'} />
+          </div>
+        ) : null}
+        {name ? <h4 className="exchange-name-heading-four">{name}</h4> : null}
+        {() => console.log('🇬🇧🇬🇧🇬🇧', description)}
+        <span className="exchange-description">
+          {description ? `${description}` : null}
+        </span>
+        {url ? (
+          <div className="links">
+            <a href={url}>{url}</a>
+          </div>
+        ) : null}
+      </StyledItemDisplay>
+    </React.Fragment>
+  )
+}
 
 const StyledItemDisplay = styled.div`
   #span-subItem {

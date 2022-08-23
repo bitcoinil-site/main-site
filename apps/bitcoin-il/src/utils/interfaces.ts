@@ -104,10 +104,10 @@ export interface SubHeadingProps {
 }
 
 export interface ItemDisplayProps {
-  name: string
+  name?: string
   logo?: string
-  description: string
-  url: string
+  description?: string
+  url?: string
   className?: string
 }
 
@@ -206,6 +206,7 @@ export interface TableOfContentsScrollTrackedProps {
 }
 export interface TableOfContentsScrollTrackedProps2 {
   categories: Record<string, any>
+  itemsOrganized?: boolean
 }
 export type TableOfContentsScrollTrackedCategory = {
   [name: string]: TableOfContentsScrollTrackedSubCategory

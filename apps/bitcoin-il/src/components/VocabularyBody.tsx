@@ -42,6 +42,7 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
     <StyledVocabulary id="Vocabulary">
       <TableOfContentsScrollTrackedExchanges
         categories={[...terms, spacer, ...oldTerms]}
+        itemsOrganized={true}
       />
     </StyledVocabulary>
   )
