@@ -4,10 +4,10 @@
 <g id="Canvas" transform="matrix(2 0 0 2 -10920 -508)">
 <g id="Btn\">
 <g id="Oval">
-<use xlink:href="#path0_fill" transform="translate(5460 254)" fill="#13161F"/>
+<use xlink:href="#path0_fill" transform="translate(5460 254)" fill="#00B3F0"/>
 </g>
 <g id="Icon/Play">
-<use xlink:href="#path1_fill" transform="translate(5480 270)" fill="transparent"/>
+<use xlink:href="#path1_fill" transform="translate(5480 270)" fill="white"/>
 </g>
 </g>
 </g>
