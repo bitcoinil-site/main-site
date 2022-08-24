@@ -97,6 +97,8 @@ const StyledGetStartedWithBitcoin = styled.div`
     &-icons-and-words {
       padding: 50px 0;
 
+      font-size: 18px;
+
       div {
         margin-bottom: 30px;
       }
