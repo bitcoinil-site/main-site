@@ -70,8 +70,12 @@ const StyledButton = styled(Button)`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--activity-bar-foreground);
     font-size: 18px;
+
+    &-primary {
+      color: white;
+    }
 
     &-default {
       background: var(--button-foreground);
