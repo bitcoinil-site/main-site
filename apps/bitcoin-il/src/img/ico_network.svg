@@ -19,7 +19,7 @@
                                 <path d="M18,2 L33,29" id="Path-7" stroke="#95AABF"></path>
                                 <path d="M33,29 L2,29" id="Path-8" stroke="#95AABF"></path>
                                 <path d="M17.8861999,39 L18.1138001,2" id="Path-9" stroke="#1C3C55"></path>
-                                <g id="Group" fill="#FFFFFF">
+                                <g id="Group" fill="transparent">
                                     <circle id="Oval" cx="19" cy="3" r="3"></circle>
                                     <circle id="Oval-Copy" cx="34" cy="11" r="3"></circle>
                                     <circle id="Oval-Copy-2" cx="19" cy="21" r="3"></circle>

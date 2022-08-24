@@ -79,89 +79,89 @@
                             </g>
                             <g id="kalkulator" transform="translate(146.000000, 106.000000)">
                                 <g id="Rectangle-8">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-1"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="0.5" y="43.5" width="107" height="107" rx="3"></rect>
                                 </g>
-                                <path d="M114.70177,1.99528602 C102.74362,0.985337684 94.4798849,3.8288588 89.9105641,10.5258494 C85.3412432,17.2228399 83.9905399,28.1218491 85.8584541,43.222877 L17.0544617,43.222877 C12.531425,14.875482 20.2822039,0.701784444 40.3067983,0.701784444 C70.3436899,0.701784444 106.075912,0.212063682 114.70177,1.99528602 C123.327628,3.77850836 130.481332,10.2706632 130.481332,26.6136899 C130.481332,35.9829364 130.481332,92.1232552 130.481332,102.80754 C130.481332,113.491825 129.98788,121.666481 131.998921,128.375966 C134.009962,135.085451 137.307153,138.584354 142.38951,141.947416 C147.471866,145.310478 157.730542,146.95961 167.903725,140.382979 C174.685847,135.998559 177.552951,125.277494 176.505038,108.219783 L130.481332,108.219783" id="Path-105" stroke="#1C3C55" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M114.70177,1.99528602 C102.74362,0.985337684 94.4798849,3.8288588 89.9105641,10.5258494 C85.3412432,17.2228399 83.9905399,28.1218491 85.8584541,43.222877 L17.0544617,43.222877 C12.531425,14.875482 20.2822039,0.701784444 40.3067983,0.701784444 C70.3436899,0.701784444 106.075912,0.212063682 114.70177,1.99528602 C123.327628,3.77850836 130.481332,10.2706632 130.481332,26.6136899 C130.481332,35.9829364 130.481332,92.1232552 130.481332,102.80754 C130.481332,113.491825 129.98788,121.666481 131.998921,128.375966 C134.009962,135.085451 137.307153,138.584354 142.38951,141.947416 C147.471866,145.310478 157.730542,146.95961 167.903725,140.382979 C174.685847,135.998559 177.552951,125.277494 176.505038,108.219783 L130.481332,108.219783" id="Path-105" stroke="#1C3C55" fill="transparent" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M107.510054,144.747244 L150.395048,144.747244" id="Path-106" stroke="#1C3C55" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <g id="Rectangle">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-2"></use>
                                     <rect stroke="#00b3f0" stroke-width="1" x="8.5" y="52.5" width="89" height="16"></rect>
                                 </g>
                                 <g id="Rectangle-3">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-3"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="13.5" y="85.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-4"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="31.5" y="85.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-2">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-5"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="49.5" y="85.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-11">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-6"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="49.5" y="117.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-3">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-7"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="67.5" y="85.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-14">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-8"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="85.5" y="85.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-15">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-9"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-9"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="85.5" y="101.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-13">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-10"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-10"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="67.5" y="101.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-16">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-11"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-11"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="67.5" y="117.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-18">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-12"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-12"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="85.5" y="117.5" width="9" height="25"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-17">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-13"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-13"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="67.5" y="133.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-4">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-14"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-14"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="13.5" y="101.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-7">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-15"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-15"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="31.5" y="101.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-10">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-16"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-16"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="49.5" y="101.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-12">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-17"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-17"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="49.5" y="133.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-8">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-18"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-18"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="31.5" y="117.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-9">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-19"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-19"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="31.5" y="133.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-5">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-20"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-20"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="13.5" y="117.5" width="9" height="9"></rect>
                                 </g>
                                 <g id="Rectangle-3-Copy-6">
-                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-21"></use>
+                                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-21"></use>
                                     <rect stroke="#1C3C55" stroke-width="1" x="13.5" y="133.5" width="9" height="9"></rect>
                                 </g>
                                 <path d="M16.2393065,27.9497819 L48.3525754,27.9497819" id="Path-108" stroke="#1C3C55" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -178,7 +178,7 @@
                             <g id="tax" transform="translate(77.000000, 172.000000)">
                                 <g id="Group-2">
                                     <g id="Rectangle-4">
-                                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-22"></use>
+                                        <use fill="transparent" fill-rule="evenodd" xlink:href="#path-22"></use>
                                         <path stroke="#1C3C55" stroke-width="1" d="M72.5689399,110.5 L84.5,97.7275936 L84.5,2 C84.5,1.17157288 83.8284271,0.5 83,0.5 L2,0.5 C1.17157288,0.5 0.5,1.17157288 0.5,2 L0.5,109 C0.5,109.828427 1.17157288,110.5 2,110.5 L72.5689399,110.5 Z"></path>
                                     </g>
                                     <path d="M72.297035,110.341127 L72.297035,100.203958 C72.297035,99.0993884 73.1924655,98.2039579 74.297035,98.2039579 L83.891626,98.2039579" id="Path-116" stroke="#1C3C55"></path>
@@ -197,7 +197,7 @@
                                 </g>
                             </g>
                             <g id="pen" transform="translate(200.500000, 276.500000) rotate(-135.000000) translate(-200.500000, -276.500000) translate(173.000000, 249.000000)" stroke="#1C3C55">
-                                <path d="M52.124743,8.16182395 L54.7217809,5.56489603 C55.0927397,5.19393738 55.0927397,4.63744506 54.7217809,4.26637772 L50.7335115,0.278218987 C50.3625527,-0.0927396625 49.8060601,-0.0927396625 49.4349925,0.278218987 L47.1657636,2.62852952 C47.0141411,2.6696143 46.8692573,2.75124042 46.7452421,2.87525561 L44.7907792,4.8297175 C44.4250375,4.54853671 43.9310417,4.57647002 43.5917116,4.91579991 L8.06911545,40.2529535 C7.97955492,40.342514 7.91205846,40.4430522 7.86575654,40.5490248 L4.17366729,44.2411123 C3.98813353,44.4266459 3.89542099,44.6120709 3.89542099,44.8903171 C3.89542099,45.12237 3.96085235,45.2896438 4.08986733,45.4464833 C2.32767701,46.8953198 1.29849178,49.0700961 1.29849178,51.3826912 L1.29849178,52.4029634 L0.278219125,53.4232355 C-0.0927397083,53.7941942 -0.0927397083,54.3506865 0.278219125,54.7217538 C0.463752886,54.9072875 0.649177958,55 0.927424255,55 C1.20567055,55 1.39120431,54.9072875 1.57662939,54.7217538 L2.59690204,53.7014817 L3.61717469,53.7014817 C5.91574997,53.7014817 8.14595925,52.6170825 9.55653755,50.9126074 C9.71239896,51.0398833 9.87912935,51.1045538 10.1095521,51.1045538 C10.3877984,51.1045538 10.5733321,51.0118413 10.7587572,50.7335951 L14.4912791,47.001075 C14.5634492,46.9584686 14.6210549,46.9044497 14.6542054,46.8381489 L44.8439286,16.6484405 L46.6627233,18.3625222 L32.2403265,32.7848033 C31.8693676,33.1557619 31.8693676,33.7122542 32.2403265,34.0833216 L33.1112822,35.058989 C33.296816,35.2445226 33.482241,35.3372351 33.7604873,35.3372351 C33.9460211,35.3372351 34.2242674,35.2445226 34.4096925,35.058989 L52.7739481,16.6947424 C53.1449069,16.3237838 53.1449069,15.7672915 52.7739481,15.3962241 L51.9029923,14.4205567 C51.5320335,14.0495981 50.9755409,14.0495981 50.6044734,14.4205567 L47.9611336,17.0638952 L46.1423389,15.3498135 L50.0843064,11.4080654 C50.2698401,11.3153529 50.4552652,11.1298192 50.4552652,10.8515731 C50.4552652,10.5733269 50.3625527,10.3877932 50.1770189,10.2023683 L51.8484531,8.3455099 C51.9521433,8.3002949 52.046921,8.23975462 52.124743,8.16182395 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                                <path d="M52.124743,8.16182395 L54.7217809,5.56489603 C55.0927397,5.19393738 55.0927397,4.63744506 54.7217809,4.26637772 L50.7335115,0.278218987 C50.3625527,-0.0927396625 49.8060601,-0.0927396625 49.4349925,0.278218987 L47.1657636,2.62852952 C47.0141411,2.6696143 46.8692573,2.75124042 46.7452421,2.87525561 L44.7907792,4.8297175 C44.4250375,4.54853671 43.9310417,4.57647002 43.5917116,4.91579991 L8.06911545,40.2529535 C7.97955492,40.342514 7.91205846,40.4430522 7.86575654,40.5490248 L4.17366729,44.2411123 C3.98813353,44.4266459 3.89542099,44.6120709 3.89542099,44.8903171 C3.89542099,45.12237 3.96085235,45.2896438 4.08986733,45.4464833 C2.32767701,46.8953198 1.29849178,49.0700961 1.29849178,51.3826912 L1.29849178,52.4029634 L0.278219125,53.4232355 C-0.0927397083,53.7941942 -0.0927397083,54.3506865 0.278219125,54.7217538 C0.463752886,54.9072875 0.649177958,55 0.927424255,55 C1.20567055,55 1.39120431,54.9072875 1.57662939,54.7217538 L2.59690204,53.7014817 L3.61717469,53.7014817 C5.91574997,53.7014817 8.14595925,52.6170825 9.55653755,50.9126074 C9.71239896,51.0398833 9.87912935,51.1045538 10.1095521,51.1045538 C10.3877984,51.1045538 10.5733321,51.0118413 10.7587572,50.7335951 L14.4912791,47.001075 C14.5634492,46.9584686 14.6210549,46.9044497 14.6542054,46.8381489 L44.8439286,16.6484405 L46.6627233,18.3625222 L32.2403265,32.7848033 C31.8693676,33.1557619 31.8693676,33.7122542 32.2403265,34.0833216 L33.1112822,35.058989 C33.296816,35.2445226 33.482241,35.3372351 33.7604873,35.3372351 C33.9460211,35.3372351 34.2242674,35.2445226 34.4096925,35.058989 L52.7739481,16.6947424 C53.1449069,16.3237838 53.1449069,15.7672915 52.7739481,15.3962241 L51.9029923,14.4205567 C51.5320335,14.0495981 50.9755409,14.0495981 50.6044734,14.4205567 L47.9611336,17.0638952 L46.1423389,15.3498135 L50.0843064,11.4080654 C50.2698401,11.3153529 50.4552652,11.1298192 50.4552652,10.8515731 C50.4552652,10.5733269 50.3625527,10.3877932 50.1770189,10.2023683 L51.8484531,8.3455099 C51.9521433,8.3002949 52.046921,8.23975462 52.124743,8.16182395 Z" id="Shape" fill="transparent" fill-rule="nonzero"></path>
                                 <path d="M4.36403783,45.6208942 L10.0276573,51.0645163" id="Path-2"></path>
                                 <path d="M44.5267063,4.72427534 L50.0987228,10.0988198" id="Path-3"></path>
                             </g>
