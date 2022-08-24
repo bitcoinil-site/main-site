@@ -17,7 +17,7 @@
                                     <mask id="mask-2" fill="white">
                                         <use xlink:href="#path-1"></use>
                                     </mask>
-                                    <use id="Mask" fill="#13161F" xlink:href="#path-1"></use>
+                                    <use id="Mask" fill="#3e3e3e" xlink:href="#path-1"></use>
                                     <g mask="url(#mask-2)" opacity="0.600000024" stroke="#3D3D3D">
                                         <g transform="translate(43.000000, -25.000000)">
                                             <polyline id="Path-4" points="0 149 215.597656 30 519.386719 78.8535156 813 128 1164 29 1514 5"></polyline>
@@ -27,7 +27,7 @@
                                 </g>
                             </g>
                         </g>
-                        <rect id="Rectangle" fill="#13161F" x="0" y="0" width="1600" height="280"></rect>
+                        <rect id="Rectangle" fill="#3e3e3e" x="0" y="0" width="1600" height="280"></rect>
                     </g>
                 </g>
             </g>

@@ -17,6 +17,8 @@ const GettingStartedBody: React.FC<GettingStartedBodyProps> = ({}) => {
   const howToUseRef = React.createRef<HTMLHeadingElement>()
   const acceptRef = React.createRef<HTMLHeadingElement>()
 
+  document.body.style.overflowX = 'hidden'
+
   return (
     <StyledGettingStartedBody id="GettingStartedBody">
       <div className="getting-started-fly-to">

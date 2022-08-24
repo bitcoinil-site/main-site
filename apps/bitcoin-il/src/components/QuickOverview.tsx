@@ -118,7 +118,7 @@ const StyledQuickOverview = styled.div`
   }
 
   .qob-dark {
-    background: #50536d;
+    background: #3e3e3e;
   }
   .qob-light {
     background: #c6d0df;
