@@ -40,13 +40,14 @@ const ContentSubHeadings: React.FC<ContentSubheadingsProps> = ({
                     <subItem.body />
                   </>
                 ) : subItem.hasSubheadings ? (
-                  <ContentSubHeadings
-                    key={`interal-content-subheadings-${i}`}
-                    i={i}
-                    item={subItem}
-                    handleRef={handleRef}
-                  />
+                  secondConSubHead({ i, subItem, handleRef })
                 ) : (
+                  // <ContentSubHeadings
+                  //   key={`interal-content-subheadings-${i}`}
+                  //   i={i}
+                  //   item={subItem}
+                  //   handleRef={handleRef}
+                  // />
                   <>No Body</>
                 )}
               </span>
@@ -55,6 +56,17 @@ const ContentSubHeadings: React.FC<ContentSubheadingsProps> = ({
         })}
       </div>
     </React.Fragment>
+  )
+}
+
+const secondConSubHead = ({ i, subItem, handleRef }) => {
+  return (
+    <ContentSubHeadings
+      key={`interal-content-subheadings-${i}`}
+      i={i}
+      item={subItem}
+      handleRef={handleRef}
+    />
   )
 }
 

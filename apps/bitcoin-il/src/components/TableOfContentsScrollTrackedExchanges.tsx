@@ -25,7 +25,6 @@ import TOCBurgerMenu from './TableOfContentsScrollTrackedBurger'
 const TableOfContentsScrollTrackedExchanges: React.FC<
   TableOfContentsScrollTrackedProps2
 > = ({ categories, itemsOrganized }) => {
-  console.log('--- Important Commit ---')
   const [isBelowZero, setIsBelowZero] = React.useState(false)
   const [isAtEnd, setIsAtEnd] = React.useState(false)
   const [isAtEndMobile, setIsAtEndMobile] = React.useState(false)
@@ -44,7 +43,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
 
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
 
-  console.log('🦀', { categories })
+  // console.log('🦀', { categories })
 
   React.useEffect(() => {
     // console.log('😂 New IsStuck')
@@ -82,7 +81,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
     // Check for duplicate keys in items
     const keys: string[] = []
 
-    items.forEach((item) => {
+    items.forEach((item: any) => {
       if (keys.includes(item.key)) {
         console.error(
           `TableOfContentsScrollTracked found duplicate key: ${item.key}`
@@ -92,7 +91,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
         keys.push(item.key)
       }
       if (item.subHeadings) {
-        item.subHeadings.map((subHeading) => {
+        item.subHeadings.forEach((subHeading: any) => {
           if (keys.includes(subHeading.key)) {
             console.error(
               `TableOfContentsScrollTracked found duplicate key: ${subHeading.key}`
@@ -261,7 +260,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
     setisAtStart(startRef.current?.getBoundingClientRect().y < 0)
   }
 
-  console.log({ itemsOrganized })
+  // console.log({ itemsOrganized })
 
   const items = !itemsOrganized
     ? React.useMemo(() => {
@@ -283,6 +282,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
               const suboutput = {
                 categoryHeading: (
                   <FormattedMessage
+                    key={`fm-sh-${subkey}`}
                     id={`exchanges.config.${subkey}`}
                     defaultMessage={`exchanges.config.${subkey}`}
                   />
@@ -298,7 +298,11 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
 
                   return {
                     categoryHeading: (
-                      <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
+                      <React.Fragment
+                        key={`${subsubkey}-cat-head-${Math.random() / 100}`}
+                      >
+                        {subsubvalue?.name ? subsubvalue.name : 'No name'}
+                      </React.Fragment>
                       // <FormattedMessage
                       //   id={`exchanges.config.${subsubkey}`}
                       //   defaultMessage={`exchanges.config.${subsubkey}`}
@@ -322,6 +326,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
                             description={subsubvalue.description}
                             url={subsubvalue.url}
                             logo={subsubvalue.logo}
+                            key={`${subsubvalue.name}-body-comp`}
                           />
                         )
                       } else {
@@ -407,7 +412,10 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
             if (!item.subHeadings) {
               // Here are the headings with no submenus
               return (
-                <div className={`toc-scroll-tracked-left-item-wrap`}>
+                <div
+                  key={`${item.key}-${i}-mapped-left-item`}
+                  className={`toc-scroll-tracked-left-item-wrap`}
+                >
                   <span
                     // DELETE ACTIVE TOC CLASS NAme????????
                     className={`toc-scroll-tracked-left-item-without-subheadings left-title ${
@@ -425,7 +433,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
               // Here are the heading with submenus
 
               return (
-                <React.Fragment>
+                <React.Fragment key={`${item.key}-${i}-subhead`}>
                   {/* 🧱🧱🧱 */}
                   <SubHeadings
                     i={i}
@@ -453,7 +461,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
           {items.map((item: any, i: any) => {
             if (!item.subHeadings) {
               // no subheadings
-              console.log('🇵🇱', item.bodyWithoutSubheadings)
+              // console.log('🇵🇱', item.bodyWithoutSubheadings)
 
               return (
                 <React.Fragment key={`no-sub-${i}`}>

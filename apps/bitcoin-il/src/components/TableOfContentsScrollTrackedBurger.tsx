@@ -16,6 +16,7 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
   openSubmenus,
   isSubmenuOpen
 }) => {
+  return null
   const [burgerOpen, setBurgerOpen] = React.useState(false)
 
   const toggleBurger = () => {

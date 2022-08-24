@@ -40,7 +40,7 @@ const CommunityBody: React.FC<CommunityBodyProps> = ({}) => {
                 cardData as Record<string, Record<string, string>>
               ).map(([key, value]) => {
                 return (
-                  <li>
+                  <li key={key}>
                     <a href={value.url}>{value.name}</a>
                   </li>
                 )

@@ -116,6 +116,7 @@ export default function ChooseWallet(): JSX.Element {
         <div className="wallet-choices-wrap">
           {wallets.map((wallet, i) => (
             <WalletChoiceCard
+              key={`wallet-${i}`}
               cover={
                 wallet.links.screenshot || wallet.screenshots?.[0] ? (
                   <img
