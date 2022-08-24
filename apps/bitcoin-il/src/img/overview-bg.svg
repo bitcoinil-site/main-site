@@ -25,7 +25,7 @@
                                         <use xlink:href="#path-1"></use>
                                     </mask>
                                     <use id="Mask" fill="#3e3e3e" xlink:href="#path-1"></use>
-                                    <g mask="url(#mask-2)" stroke="#3D3D3D">
+                                    <g mask="url(#mask-2)" stroke="white">
                                         <g transform="translate(-43.000000, -85.000000)">
                                             <polyline id="Path-4" points="43.4132604 188.716309 291 81 470 188 780 215 1200 109 1415 32"></polyline>
                                             <path d="M422,1 L289,82" id="Path-18"></path>
