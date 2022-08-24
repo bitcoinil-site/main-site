@@ -47,6 +47,7 @@ export interface SiteButtonProps {
   transition?: string
   buttonLinkWrapUrl?: string
   buttonLinkId?: string
+  size?: string
 }
 
 export interface TranslationDictionary {

@@ -16,7 +16,8 @@ export default function SiteButton({
   color,
   href,
   buttonLinkWrapUrl,
-  buttonLinkId
+  buttonLinkId,
+  size
 }: SiteButtonProps) {
   return (
     <StyledButton
@@ -69,6 +70,8 @@ const StyledButton = styled(Button)`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-size: 18px;
 
     &-default {
       background: var(--button-foreground);

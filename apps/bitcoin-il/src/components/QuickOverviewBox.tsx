@@ -31,14 +31,12 @@ const QuickOverviewBox: React.FC<QuickOverviewBoxProps> = ({
 export default QuickOverviewBox
 
 const StyledQuickOverviewBox = styled.div<StyledQuickOverviewBoxProps>`
-  margin-top: 15px;
   display: flex;
   flex-direction: column;
   max-width: 250px;
   background-color: ${(props) => (!props.isDarkMode ? 'white' : 'black')};
   color: ${(props) => (!props.isDarkMode ? 'black' : 'white')};
   border: ${(props) => (props.isDarkMode ? '' : '1px solid grey')};
-  margin: 20px;
   width: 20vw;
   align-items: center;
   justify-content: space-around;
@@ -64,10 +62,15 @@ const StyledQuickOverviewBox = styled.div<StyledQuickOverviewBoxProps>`
     h4 {
       color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
       font-weight: bolder;
+      font-size: 22px;
+      margin: 0;
     }
 
     p {
-      color: grey;
+      color: var(--list-active-selection-foreground);
+      text-align: center;
+      font-size: 20px;
+      margin: 0;
     }
   }
 `
