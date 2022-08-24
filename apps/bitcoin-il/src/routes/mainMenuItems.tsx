@@ -147,7 +147,7 @@ export const mainMenuItems: MainMenuItem[] = [
             description={`mainMenu Devs Label`}
           />
         ),
-        key: 'developers',
+        key: 'developer',
         element: (
           <RoutePage
             id="developers"
@@ -643,7 +643,7 @@ export const mainMenuItems: MainMenuItem[] = [
             description={`mainMenu.development.label`}
           />
         ),
-        key: 'developers',
+        key: 'developer',
         element: (
           <RoutePage
             id="development"

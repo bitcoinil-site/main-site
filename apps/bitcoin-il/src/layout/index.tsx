@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import styled from 'styled-components'
 
@@ -71,7 +71,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
+  const navigate = useNavigate()
+
   React.useEffect(() => {
+    location.pathname === '/developers' ? navigate('/developer') : null
     window.scrollTo({ top: 0 })
   }, [location])
 

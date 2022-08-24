@@ -15,7 +15,7 @@ export interface MainMenuItem {
 export interface RoutePageProps {
   title: JSX.Element
   subtitle: JSX.Element | null
-  body: JSX.Element
+  body: JSX.Element | Function
   id: string
 }
 
