@@ -193,8 +193,8 @@ const BurgerWrap = styled.div`
 
     .burger-slide-out {
       z-index: 5;
-      overflow: hidden;
-      width: 95vw;
+      /* overflow: hidden; */
+      width: 100vw;
       position: absolute;
       background-color: transparent;
       color: white;
@@ -213,7 +213,7 @@ const BurgerWrap = styled.div`
       }
 
       &.open {
-        width: 95vw;
+        width: 100vw;
 
         height: 100%;
         ${landscapeMobile} {
@@ -230,7 +230,7 @@ const BurgerWrap = styled.div`
       background: transparent;
       top: 60px;
       left: 0;
-      width: 95vw;
+      width: 100vw;
 
       &.closed {
         height: 0;
