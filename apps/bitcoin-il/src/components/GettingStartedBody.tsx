@@ -93,8 +93,8 @@ const StyledGettingStartedBody = styled.div`
       margin: 0;
       padding: 20px;
       font-size: 18px;
-      color: grey;
       cursor: pointer;
+      color: var(--editor-foreground);
 
       &:hover {
         opacity: 0.7;
