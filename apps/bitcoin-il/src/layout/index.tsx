@@ -105,6 +105,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 export default AppLayout
 
 const AppStyleWrap = styled.div`
+  &.invisible {
+    opacity: 0;
+  }
+
   font-family: 'Titillium Web', sans-serif;
   font-weight: bolder;
   letter-spacing: 0.4px;
