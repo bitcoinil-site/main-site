@@ -48,6 +48,7 @@ export interface SiteButtonProps {
   buttonLinkWrapUrl?: string
   buttonLinkId?: string
   size?: string
+  style?: {}
 }
 
 export interface TranslationDictionary {
@@ -202,20 +203,17 @@ export interface ElementToTrack {
   menuParent?: string | null
 }
 
-export interface TableOfContentsScrollTrackedProps {
-  items: tableOfContentItem[]
-}
-export interface TableOfContentsScrollTrackedProps2 {
+export interface StickyTOCProps {
   categories: Record<string, any>
   itemsOrganized?: boolean
 }
-export type TableOfContentsScrollTrackedCategory = {
-  [name: string]: TableOfContentsScrollTrackedSubCategory
+export type StickyTOCCategory = {
+  [name: string]: StickyTOCSubCategory
 }
-export type TableOfContentsScrollTrackedSubCategory = {
-  [name: string]: TableOfContentsScrollTrackedItem
+export type StickyTOCSubCategory = {
+  [name: string]: StikcyTOCItem
 }
-export type TableOfContentsScrollTrackedItem = {
+export type StikcyTOCItem = {
   name: string
   description: string
   logo: string
@@ -225,6 +223,7 @@ export type TableOfContentsScrollTrackedItem = {
 export interface LogoProps {
   isDark: boolean
   props?: any
+  isHeader?: boolean
 }
 
 export interface tableOfContentItem {
@@ -248,6 +247,7 @@ export interface CustomNavLinkProps {
   to: string
   children?: React.ReactNode
   style?: any
+  className?: string
 }
 
 export interface YouShouldKnowProps {}
@@ -429,7 +429,7 @@ export interface AppLayoutProps {
   children: JSX.Element
 }
 
-export interface TOCBurgerMenuProps {
+export interface StickyTOCBurgerProps {
   label: JSX.Element
   items: tableOfContentItem[]
   elInView: string
@@ -438,6 +438,7 @@ export interface TOCBurgerMenuProps {
   handleOpenSubmenu: Function
   openSubmenus: string[]
   isSubmenuOpen: Function
+  disabled: boolean
 }
 
 export interface SubmenuRef {

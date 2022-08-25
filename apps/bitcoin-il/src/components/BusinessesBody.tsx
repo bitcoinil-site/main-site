@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { businessCards } from '../data/BusinessesBodyData'
+import { phoneDevices } from '../utils/breakpoints'
 import { BusinessBodyProps } from '../utils/interfaces'
 import SiteButton from './BitcoinSiteButton'
 import CardsDisplay from './CardsDisplay'
@@ -12,8 +13,11 @@ const BusinessBody: React.FC<BusinessBodyProps> = ({}) => {
   return (
     <StyledBusinessBody id="IndividualsBody">
       <CardsDisplay cards={businessCards} />
-      <div className="individuals-button">
-        <CustomNavLink to="/getting-started">
+      <div className="business-button">
+        <CustomNavLink
+          className="align-button-to-center-business"
+          to="/getting-started"
+        >
           <SiteButton type="primary">
             <FormattedMessage
               id={`businesses.get-started-button`}
@@ -35,8 +39,17 @@ const StyledBusinessBody = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-  .individuals-button {
-    margin: 50px;
-    align-self: center;
+  .business-button {
+    width: 100%;
+    margin-top: 75px;
+  }
+
+  .align-button-to-center-business {
+    /* width: 100vw; */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
   }
 `

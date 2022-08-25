@@ -79,10 +79,11 @@ const StyledGettingStartedBody = styled.div`
   flex-direction: column;
 
   .getting-started-fly-to {
-    width: 100vw;
+    width: 100%;
     justify-content: center;
     display: flex;
     border-bottom: 1px solid #e1e1e1;
+    margin-top: 50px;
 
     ${phoneDevices} {
       display: none;

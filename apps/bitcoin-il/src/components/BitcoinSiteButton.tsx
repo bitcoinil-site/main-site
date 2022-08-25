@@ -17,6 +17,7 @@ export default function SiteButton({
   href,
   buttonLinkWrapUrl,
   buttonLinkId,
+  style,
   size
 }: SiteButtonProps) {
   return (
@@ -25,7 +26,8 @@ export default function SiteButton({
       style={{
         color: color ? color : '',
         background: background ? background : '',
-        border: background ? `2px solid ${background}` : ''
+        border: background ? `2px solid ${background}` : '',
+        ...style
       }}
       href={href}
       type={type}

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { terms as oldTerms, useVocabulary } from '../data/VocabularyBodyData'
 import { tableOfContentItem, VocabularyProps } from '../utils/interfaces'
-import TableOfContentsScrollTrackedExchanges from './TableOfContentsScrollTrackedExchanges'
+import StickyTOC from './StickyTOC'
 import TableOfContentsScrollTrackedVocabulary from './TableOfContentsScrollTrackedVocabulary'
 
 const Vocabulary: React.FC<VocabularyProps> = ({}) => {
@@ -40,7 +40,7 @@ const Vocabulary: React.FC<VocabularyProps> = ({}) => {
 
   return (
     <StyledVocabulary id="Vocabulary">
-      <TableOfContentsScrollTrackedExchanges
+      <StickyTOC
         categories={[...terms, spacer, ...oldTerms]}
         itemsOrganized={true}
       />

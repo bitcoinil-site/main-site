@@ -14,7 +14,7 @@ const CardsDisplay: React.FC<CardsDisplayProps> = ({ cards }) => {
             <Card key={`card-${i}`}>
               <img src={card.img} />
               <h1 className="card-title">{card.title}</h1>
-              <span>{card.text}</span>
+              <span className="card-text">{card.text}</span>
             </Card>
           )
         })}
@@ -31,6 +31,8 @@ const StyledCardsDisplay = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 10em;
+  /* max-width: 100vw; */
+  width: 100%;
 
   .body-cards {
     display: flex;
@@ -39,6 +41,7 @@ const StyledCardsDisplay = styled.div`
     max-width: 100vw;
     padding: 25px 0 0 0;
     margin: auto;
+    margin-bottom: 100px;
 
     ${phoneDevices} {
     }
@@ -70,14 +73,23 @@ const StyledCardsDisplay = styled.div`
       justify-content: flex-start;
 
       ${phoneDevices} {
-        max-width: 80vw;
+        /* max-width: 100vw; */
         margin: auto;
       }
 
-      .card-title {
-        font-weight: bolder;
-        text-align: center;
-        margin-bottom: 50px;
+      .card {
+        &-title {
+          font-weight: bolder;
+          text-align: center;
+          margin-bottom: 20px;
+
+          span {
+          }
+        }
+
+        &-text {
+          font-size: 18px;
+        }
       }
       .list-of-links {
         font-size: 16px;

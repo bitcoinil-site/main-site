@@ -13,18 +13,19 @@ import {
   ElementToTrack,
   HTMLElementWithID,
   tableOfContentItem,
-  TableOfContentsScrollTrackedProps2,
+  StickyTOCProps,
   tableOfContentSubheading
 } from '../utils/interfaces'
 import ContentSubHeadings from './ContentSubheadings'
 import { FormattedMessage } from './FormattedMessageWithHover'
 import ItemDisplay from './ItemDisplay'
+import StickyTOCBurger from './StikcyTOCBurger'
 import SubHeadings from './Subheadings'
-import TOCBurgerMenu from './TableOfContentsScrollTrackedBurger'
 
-const TableOfContentsScrollTrackedExchanges: React.FC<
-  TableOfContentsScrollTrackedProps2
-> = ({ categories }) => {
+const StickyTOC: React.FC<StickyTOCProps> = ({
+  categories,
+  itemsOrganized
+}) => {
   const [isBelowZero, setIsBelowZero] = React.useState(false)
   const [isAtEnd, setIsAtEnd] = React.useState(false)
   const [isAtEndMobile, setIsAtEndMobile] = React.useState(false)
@@ -43,10 +44,17 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
 
   const isStuck = isBelowZero && !isAtEnd && isAtStart && !isAtEndMobile
 
+  // console.log('🦀', { categories })
+
   React.useEffect(() => {
     // console.log('😂 New IsStuck')
     // console.log({ isBelowZero, isAtEnd, isAtStart, isAtEndMobile })
     // console.log({ isStuck })
+    // leftHandColumnRef?.current?.style.opacity = 0
+    // leftHandColumnRef && leftHandColumnRef.current
+    //   ? (leftHandColumnRef.current.style.opacity = 0)
+    //   : null
+    // leftHandColumnRef?.current?.style.opacity = 0
   }, [isStuck])
 
   React.useEffect(() => {
@@ -79,7 +87,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
     // Check for duplicate keys in items
     const keys: string[] = []
 
-    items.forEach((item) => {
+    items.forEach((item: any) => {
       if (keys.includes(item.key)) {
         console.error(
           `TableOfContentsScrollTracked found duplicate key: ${item.key}`
@@ -89,7 +97,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
         keys.push(item.key)
       }
       if (item.subHeadings) {
-        item.subHeadings.map((subHeading) => {
+        item.subHeadings.forEach((subHeading: any) => {
           if (keys.includes(subHeading.key)) {
             console.error(
               `TableOfContentsScrollTracked found duplicate key: ${subHeading.key}`
@@ -258,80 +266,117 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
     setisAtStart(startRef.current?.getBoundingClientRect().y < 0)
   }
 
-  const items = React.useMemo(() => {
-    return Object.entries(categories).map(([key, value]) => {
-      // console.log(key)
-      console.log({ key, value })
-      const output = {
-        categoryHeading: (
-          <FormattedMessage
-            key={key}
-            id={`exchanges.config.${key}`}
-            defaultMessage={`exchanges.config.${key}`}
-          />
-        ),
-        key: key,
-        hasSubheadings: true,
-        isSubmenuParent: true,
-        subHeadings: Object.entries(value).map(([subkey, subvalue]) => {
-          const suboutput = {
+  // console.log({ itemsOrganized })
+
+  const items = !itemsOrganized
+    ? React.useMemo(() => {
+        return Object.entries(categories).map(([key, value]) => {
+          // console.log(key)
+          // console.log(key, value)
+          const output = {
             categoryHeading: (
               <FormattedMessage
-                id={`exchanges.config.${subkey}`}
-                defaultMessage={`exchanges.config.${subkey}`}
+                key={key}
+                id={`exchanges.config.${key}`}
+                defaultMessage={`exchanges.config.${key}`}
               />
             ),
-            key: subkey,
-            isSubmenuParent: true,
+            key: key,
             hasSubheadings: true,
-            subHeadings: Object.entries(
-              subvalue as Record<string, Record<string, string>>
-            ).map(([subsubkey, subsubvalue]) => {
-              // console.log('sub sub key:', subsubkey)
-              // console.log('sub sub value:', subsubvalue)
-
-              return {
+            isSubmenuParent: true,
+            subHeadings: Object.entries(value).map(([subkey, subvalue]) => {
+              const suboutput = {
                 categoryHeading: (
-                  // <>{subsubvalue?.name ? subsubvalue.name : 'No name'}</>
                   <FormattedMessage
-                    id={`exchanges.config.${subsubkey}`}
-                    defaultMessage={`exchanges.config.${subsubkey}`}
+                    key={`fm-sh-${subkey}`}
+                    id={`exchanges.config.${subkey}`}
+                    defaultMessage={`exchanges.config.${subkey}`}
                   />
                 ),
-                key: subsubkey,
-                hasSubheadings: false,
-                isSubmenuParent: false,
-                body: () => {
-                  // console.log('🥩', subsubvalue)
-                  const { name, description, url, logo } = subsubvalue
-                  // console.log({ name, description, url, logo })
-                  return (
-                    <ItemDisplay
-                      name={name}
-                      description={description}
-                      url={url}
-                      logo={logo}
-                    />
-                  )
-                }
-                // bodyWithoutSubheadings: () => <></>,
-                // bodyWithoutSubheadings:  () => (
-                //     <>
-                //       Sup body of "{subsubkey}" - value: "{subsubvalue}"
-                //     </>
-                //   )
-                //         isSubmenuParent: false,
-                //         hasSubheadings: false
-              }
-            })
-          }
-          return suboutput as tableOfContentItem
-        })
-      } as tableOfContentItem
+                key: subkey,
+                isSubmenuParent: true,
+                hasSubheadings: true,
+                subHeadings: Object.entries(
+                  subvalue as Record<string, Record<string, string>>
+                ).map(([subsubkey, subsubvalue]) => {
+                  // console.log('sub sub key:', subsubkey)
+                  // console.log('sub sub value:', subsubvalue)
 
-      return output
-    })
-  }, [categories])
+                  return {
+                    categoryHeading: (
+                      <React.Fragment
+                        key={`${subsubkey}-cat-head-${Math.random() / 100}`}
+                      >
+                        {subsubvalue?.name ? subsubvalue.name : 'No name'}
+                      </React.Fragment>
+                      // <FormattedMessage
+                      //   id={`exchanges.config.${subsubkey}`}
+                      //   defaultMessage={`exchanges.config.${subsubkey}`}
+                      // />
+                    ),
+                    key: subsubkey,
+                    hasSubheadings: false,
+                    isSubmenuParent: false,
+                    body: () => {
+                      // console.log('🥩', subsubvalue)
+                      // if (
+                      //   subsubvalue.name &&
+                      //   subsubvalue.description &&
+                      //   subsubvalue.url &&
+                      //   subsubvalue.logo
+                      // ) {
+                      if (subsubvalue) {
+                        return (
+                          <ItemDisplay
+                            name={subsubvalue.name}
+                            description={subsubvalue.description}
+                            url={subsubvalue.url}
+                            logo={subsubvalue.logo}
+                            key={`${subsubvalue.name}-body-comp`}
+                          />
+                        )
+                      } else {
+                        return <>Missing SubSubValue</>
+                      }
+                      // subsubvalue ?return (
+                      //   <ItemDisplay
+                      //     name={subsubvalue.name}
+                      //     description={subsubvalue.description}
+                      //     url={subsubvalue.url}
+                      //     logo={subsubvalue.logo}
+                      //   />
+                      // ):return <>No sub sub</>
+                      // } else {
+                      //   console.log('🏈', subsubvalue)
+                      //   return (
+                      //     <React.Fragment
+                      //       key={`No-SubSubValue-${Math.random() / 100}`}
+                      //     >
+                      //       🏈 Check Console For Missing Sub Sub Value
+                      //     </React.Fragment>
+                      //   )
+                      // }
+                      // console.log({ name, description, url, logo })
+                    }
+                    // bodyWithoutSubheadings: () => <></>,
+                    // bodyWithoutSubheadings:  () => (
+                    //     <>
+                    //       Sup body of "{subsubkey}" - value: "{subsubvalue}"
+                    //     </>
+                    //   )
+                    //         isSubmenuParent: false,
+                    //         hasSubheadings: false
+                  }
+                })
+              }
+              return suboutput as tableOfContentItem
+            })
+          } as tableOfContentItem
+
+          return output
+        })
+      }, [categories])
+    : categories
 
   // if (!items) return <h1>No Items To Show</h1>
   if (!categories) return <h1>No Items To Show</h1>
@@ -341,6 +386,28 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
   return (
     // Left Side First
     <StyledTableOfContentsScrollTracked id="TableOfContentsScrollTracked">
+      <div className="top-hitbox" ref={startRef} />
+      <div className={`mobile-toc ${isStuck ? 'mobile-toc-stuck' : ''}`}>
+        <StickyTOCBurger
+          disabled={true}
+          elInView={elInView}
+          scrollToRightSideElement={scrollToRightSideElement}
+          handleRef={handleRef}
+          handleOpenSubmenu={handleOpenSubmenu}
+          openSubmenus={openSubmenus}
+          isSubmenuOpen={isSubmenuOpen}
+          items={items}
+          label={
+            <span className="burger-menu-title">
+              <FormattedMessage
+                id={`faq.mobile.burger-menu-title`}
+                defaultMessage={`See All`}
+                description={`mobile.burger-menu-title`}
+              />
+            </span>
+          }
+        />
+      </div>
       <div className="scroll-track-toc-main">
         <div
           className={`toc-scroll-tracked-left ${
@@ -348,13 +415,14 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
           } ${isAtEndMobile ? 'hide-left-on-mobile-end' : ''}`}
           ref={leftHandColumnRef}
         >
-          <h1>Table Of Contents</h1>
-          {items.map((item, i) => {
-            console.log('👽️', item)
+          {items.map((item: any, i: number) => {
             if (!item.subHeadings) {
               // Here are the headings with no submenus
               return (
-                <div className={`toc-scroll-tracked-left-item-wrap`}>
+                <div
+                  key={`${item.key}-${i}-mapped-left-item`}
+                  className={`toc-scroll-tracked-left-item-wrap`}
+                >
                   <span
                     // DELETE ACTIVE TOC CLASS NAme????????
                     className={`toc-scroll-tracked-left-item-without-subheadings left-title ${
@@ -364,12 +432,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
                     ref={(ref) => handleRef(ref, true, item)}
                     key={i}
                   >
-                    <div
-                      className={item.key === elInView ? 'active-toc-item' : ''}
-                    >
-                      👽️👽️👽️
-                      {item.categoryHeading}
-                    </div>
+                    <div>{item.categoryHeading}</div>
                   </span>
                 </div>
               )
@@ -377,7 +440,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
               // Here are the heading with submenus
 
               return (
-                <React.Fragment>
+                <React.Fragment key={`${item.key}-${i}-subhead`}>
                   {/* 🧱🧱🧱 */}
                   <SubHeadings
                     i={i}
@@ -402,9 +465,10 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
             isStuck ? 'right-when-is-stuck' : ''
           }`}
         >
-          {items.map((item, i) => {
+          {items.map((item: any, i: any) => {
             if (!item.subHeadings) {
               // no subheadings
+              // console.log('🇵🇱', item.bodyWithoutSubheadings)
 
               return (
                 <React.Fragment key={`no-sub-${i}`}>
@@ -415,8 +479,12 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
                   >
                     {item.categoryHeading}
                   </span>
-                  📙
-                  {item.body && <item.body />}
+
+                  {item.bodyWithoutSubheadings &&
+                    item.bodyWithoutSubheadings[0] &&
+                    item.bodyWithoutSubheadings[0].body && (
+                      <span>{item.bodyWithoutSubheadings[0].body}</span>
+                    )}
                 </React.Fragment>
               )
             } else {
@@ -437,7 +505,7 @@ const TableOfContentsScrollTrackedExchanges: React.FC<
   )
 }
 
-export default TableOfContentsScrollTrackedExchanges
+export default StickyTOC
 
 const leftTitleSize = 19
 const leftSubtitleSize = 16
@@ -450,7 +518,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
   margin-top: 100px;
 
   .mobile-toc {
-    /* background-color: ${colors.accent};
+    background-color: ${colors.accent};
     color: white;
     display: none;
     position: sticky;
@@ -466,29 +534,22 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
 
     ${TOCBreakPointOne} {
-      display: flex;
-      padding-left: 15px;
+      /* display: flex; */
+      /* padding-left: 15px; */
     }
 
     ${TOCBreakPointMobileHeight} {
       display: flex;
-    } */
-
-    display: none; // hide always
+    }
   }
 
   .scroll-track-toc-main {
-    display: flex;
-    flex-direction: column;
-    padding: 80px;
+    display: grid;
+    grid-template-columns: [toc] 40% [body] 60%;
 
-    @media only screen and (max-width: 460px) {
-      padding: 35px;
-    }
-
-    ${TOCBreakPointOne} {
-      /* padding: 50px; */
-      /* display: flex; */
+    ${phoneDevices} {
+      padding: 50px;
+      display: flex;
     }
 
     ${TOCBreakPointMobile} {
@@ -506,6 +567,9 @@ const StyledTableOfContentsScrollTracked = styled.div`
       padding-right: 5vw;
       width: 50vw; */
       grid-area: body;
+      display: flex;
+      flex-direction: column;
+
       &-item-heading {
         font-size: ${leftTitleSize}px;
         &-has-subheadings {
@@ -518,24 +582,19 @@ const StyledTableOfContentsScrollTracked = styled.div`
     }
 
     &-left {
-      /* position: absolute;
+      position: absolute;
       min-height: 100vh;
-      width: 38%;
-      border-right: 1px solid var(--text-color-secondary);
-      overflow: scroll; */
-      margin-bottom: 200px;
-
-      @media only screen and (max-width: 460px) {
-        display: none;
-      }
+      /* width: 22%; */
+      /* border-right: 1px solid var(--text-color-secondary); */
+      overflow: scroll;
+      padding: 0 30px;
 
       &::-webkit-scrollbar {
         width: 8px;
       }
 
-      ${TOCBreakPointOne} {
-        /* background: orange; */
-        /* display: none; */
+      ${phoneDevices} {
+        display: none;
       }
 
       &::-webkit-scrollbar-track {
@@ -583,13 +642,13 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .stuck {
-    /* position: fixed;
-    top: 0;
-    height: 100vh; */
+    /* position: fixed; */
+    /* top: 0; */
+    /* height: 100vh; */
   }
 
   .left-title {
-    border-right: ${borderSize}px solid transparent;
+    /* border-right: ${borderSize}px solid transparent; */
     img {
       transition: margin-right padding-top transform float 400ms;
       float: right;
@@ -619,6 +678,15 @@ const StyledTableOfContentsScrollTracked = styled.div`
 
     ${TOCBreakPointMobile} {
       margin-top: 0;
+    }
+  }
+
+  .right-when-is-stuck {
+    /* position: sticky;
+    top: 0; */
+
+    ${TOCBreakPointOne} {
+      /* background: blue; */
     }
   }
 
@@ -685,6 +753,6 @@ const StyledTableOfContentsScrollTracked = styled.div`
   }
 
   .toc-scroll-tracked-left-item-wrap {
-    background: dodgerblue;
+    /* background: dodgerblue; */
   }
 `

@@ -28,7 +28,7 @@ export default function HomePage(): JSX.Element {
 
 const StyledHomePage = styled.div`
   ${phoneDevices} {
-    padding: 50px 0 50px;
+    padding: 50px 0 0 0;
   }
 
   display: flex;
@@ -41,8 +41,8 @@ const StyledHomePage = styled.div`
   h1 {
     ${phoneDevices} {
       font-size: 32px;
-      margin: 100px 0 20px 0;
-      padding: 0 70px;
+      padding: 0 10px;
+      margin: 0 0 20px 0;
     }
 
     font-size: 51px;

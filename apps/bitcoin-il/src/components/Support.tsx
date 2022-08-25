@@ -113,6 +113,7 @@ const Support: React.FC<SupportProps> = () => {
               <SiteButton
                 opacity={isExtended ? '1' : '0'}
                 transition={`opacity 800ms`}
+                type={`primary`}
               >
                 <p>
                   <FormattedMessage
@@ -136,6 +137,7 @@ const Support: React.FC<SupportProps> = () => {
                 <h1 className="modal-title">Donate to Bitcoin Il</h1>
                 <div className="buttons-container">
                   <SiteButton
+                    style={{ color: 'black' }}
                     type={
                       chosenCurrency === 'usd' && chosenAmount === 1
                         ? 'primary'
@@ -149,6 +151,7 @@ const Support: React.FC<SupportProps> = () => {
                     <p className="button-top">$1.00</p>
                   </SiteButton>
                   <SiteButton
+                    style={{ color: 'black' }}
                     type={
                       chosenCurrency === 'usd' && chosenAmount === 5
                         ? 'primary'
@@ -162,6 +165,7 @@ const Support: React.FC<SupportProps> = () => {
                     <p className="button-top">$5.00</p>
                   </SiteButton>
                   <SiteButton
+                    style={{ color: 'black' }}
                     type={
                       chosenCurrency === 'usd' && chosenAmount === 10
                         ? 'primary'
@@ -180,6 +184,7 @@ const Support: React.FC<SupportProps> = () => {
                     <div className="custom-amount-wrap">
                       <p>USD</p>
                       <input
+                        style={{ color: 'black' }}
                         value={chosenCurrency === 'usd' ? chosenAmount : 0}
                         type="number"
                         min={0}
@@ -193,6 +198,7 @@ const Support: React.FC<SupportProps> = () => {
                     <div className="custom-amount-wrap">
                       <p>BTC</p>
                       <input
+                        style={{ color: 'black' }}
                         value={chosenCurrency === 'btc' ? chosenAmount : 0}
                         placeholder="Or custom amount (USD)"
                         min="0"
@@ -208,13 +214,22 @@ const Support: React.FC<SupportProps> = () => {
                 </div>
                 <div className="qr-trio-wrap">
                   <div className="qr-trio-wrap-btc">
-                    <span className="qr-trio-wrap-logo">
+                    <span
+                      style={{ color: 'black' }}
+                      className="qr-trio-wrap-logo"
+                    >
                       <img className="crypto-logo" src={ico_btc} />
                     </span>
-                    <span className="qr-trio-wrap-wallet-address">
+                    <span
+                      style={{ color: 'black' }}
+                      className="qr-trio-wrap-wallet-address"
+                    >
                       bc346729623789123913
                     </span>
-                    <span className="qr-trio-wrap-qr">
+                    <span
+                      style={{ color: 'black' }}
+                      className="qr-trio-wrap-qr"
+                    >
                       <img src={bitcoinQRString} />
                     </span>
                   </div>

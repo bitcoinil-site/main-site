@@ -9,7 +9,7 @@ import { colors } from '../theme/colors'
 import { phoneDevices, smallDevices } from '../utils/breakpoints'
 import { ExchangesBodyProps } from '../utils/interfaces'
 import { FormattedMessage } from './FormattedMessageWithHover'
-import TableOfContentsScrollTrackedExchanges from './TableOfContentsScrollTrackedExchanges'
+import StickyTOC from './StickyTOC'
 
 const ExchangesBody: React.FC<ExchangesBodyProps> = ({}) => {
   const dark = useRecoilValue(isDarkModeState)
@@ -34,7 +34,7 @@ const ExchangesBody: React.FC<ExchangesBodyProps> = ({}) => {
           description={`exhcnages-warning`}
         />
       </div>
-      <TableOfContentsScrollTrackedExchanges categories={exchanges} />
+      <StickyTOC categories={exchanges} />
     </StyledExchangesBody>
   )
 }

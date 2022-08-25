@@ -76,6 +76,7 @@ const StyledEventsBody = styled.div`
   }
 
   .expanded {
+    padding: 20px;
     height: auto;
   }
 

@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
     <StyledHeader className="header" onClick={(e) => handleClickHeader(e)}>
       <div className="header-left logo">
         <CustomNavLink to="/">
-          <Logo isDark={darkModeState} />
+          <Logo isDark={darkModeState} isHeader={true} />
         </CustomNavLink>
       </div>
       <div className="header-middle">

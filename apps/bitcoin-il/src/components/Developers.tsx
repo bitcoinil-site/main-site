@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { phoneDevices } from '../utils/breakpoints'
 
 import { DevelopersProps } from '../utils/interfaces'
 import { FormattedMessage } from './FormattedMessageWithHover'
@@ -26,5 +27,9 @@ export default Developers
 const StyledDevelopers = styled.div`
   h1 {
     padding: 200px;
+    text-align: center;
+    ${phoneDevices} {
+      padding: 30px;
+    }
   }
 `

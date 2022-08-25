@@ -95,13 +95,16 @@ const StyledFooter = styled.div`
 
   .logo {
     padding: 50px 0;
+
     ${phoneDevices} {
     }
 
     ${landscapeMobile} {
     }
-    img {
-      height: 500px;
+
+    svg {
+      /* height: 500px; */
+      max-width: 90vw;
     }
   }
 

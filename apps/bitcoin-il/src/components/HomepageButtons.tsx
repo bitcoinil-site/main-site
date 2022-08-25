@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { phoneDevices } from '../utils/breakpoints'
 
 import SiteButton from './BitcoinSiteButton'
 import { FormattedMessage } from './FormattedMessageWithHover'
@@ -58,6 +59,11 @@ const StyledHomepageButtons = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    margin: 50px 0;
+
+    ${phoneDevices} {
+      margin: 50px 0 0 0;
+    }
 
     .ant-btn {
       width: 285px;

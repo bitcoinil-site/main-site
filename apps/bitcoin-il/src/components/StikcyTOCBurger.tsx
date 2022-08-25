@@ -2,11 +2,10 @@ import { Divider } from 'antd'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import ico_angle from '../img/ico_angle.svg'
 import { colors } from '../theme/colors'
-import { TOCBurgerMenuProps } from '../utils/interfaces'
+import { StickyTOCBurgerProps } from '../utils/interfaces'
 
-const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
+const StickyTOCBurger: React.FC<StickyTOCBurgerProps> = ({
   label,
   items,
   elInView,
@@ -14,9 +13,11 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
   handleRef,
   handleOpenSubmenu,
   openSubmenus,
+  disabled,
   isSubmenuOpen
 }) => {
-  return null
+  if (disabled) return null
+
   const [burgerOpen, setBurgerOpen] = React.useState(false)
 
   const toggleBurger = () => {
@@ -141,7 +142,7 @@ const TOCBurgerMenu: React.FC<TOCBurgerMenuProps> = ({
   )
 }
 
-export default TOCBurgerMenu
+export default StickyTOCBurger
 
 const BurgerWrap = styled.div`
   transition: height 400ms;

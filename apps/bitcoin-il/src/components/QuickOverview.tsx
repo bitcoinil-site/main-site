@@ -77,7 +77,7 @@ const StyledQuickOverview = styled.div`
   width: 100%;
 
   .quick-overview {
-    padding-top: 300px;
+    padding-top: 150px;
     background-size: cover;
   }
 
@@ -96,7 +96,7 @@ const StyledQuickOverview = styled.div`
 
   h1 {
     ${phoneDevices} {
-      margin-top: 50px;
+      margin-top: 100px;
     }
 
     color: white;
@@ -110,6 +110,9 @@ const StyledQuickOverview = styled.div`
     padding-bottom: 60px;
 
     ${phoneDevices} {
+      a {
+        margin-bottom: 20px;
+      }
     }
 
     ${largeDevices} {

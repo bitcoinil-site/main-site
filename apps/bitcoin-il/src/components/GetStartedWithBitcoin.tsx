@@ -138,6 +138,10 @@ const StyledGetStartedWithBitcoin = styled.div`
           justify-content: center;
           img {
             max-width: 90vw;
+
+            ${phoneDevices} {
+              max-width: 60vw;
+            }
           }
         }
       }
@@ -145,6 +149,7 @@ const StyledGetStartedWithBitcoin = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 60px;
       }
     }
   }

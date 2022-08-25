@@ -4,7 +4,7 @@ import * as React from 'react'
 import { ReactComponent as LogoSVG } from '../img/logo.svg'
 import { LogoProps } from '../utils/interfaces'
 
-const Logo: React.FC<LogoProps> = ({ props, isDark }) => {
+const Logo: React.FC<LogoProps> = ({ props, isDark, isHeader }) => {
   const [size, setSize] = React.useState(500)
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ const Logo: React.FC<LogoProps> = ({ props, isDark }) => {
     return () => window.removeEventListener('resize', resizeHandler)
   }, [])
 
-  return <LogoSVG width={size} {...props} />
+  return <LogoSVG id="Logo.tsx" width={isHeader ? 130 : size} {...props} />
 }
 
 export default Logo

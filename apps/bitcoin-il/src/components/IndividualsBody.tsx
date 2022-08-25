@@ -29,7 +29,7 @@ const StyledIndividualsBody = styled.div`
   justify-content: center;
 
   .individuals-button {
-    margin: 50px;
+    margin-bottom: 50px;
     align-self: center;
   }
 `
