@@ -44,6 +44,19 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     }
   }, [])
 
+  React.useEffect(() => {
+    window.addEventListener('beforeunload', fadeOut)
+    return () => {
+      window.removeEventListener('beforeunload', fadeOut)
+    }
+  }, [])
+
+  const fadeOut = (e: any) => {
+    // e.preventDefault()
+    // e.returnValue = ''
+    document.body.style.opacity = '0'
+  }
+
   const location = useLocation()
 
   const handleKeyDown = React.useCallback(
@@ -114,6 +127,10 @@ export default AppLayout
 const AppStyleWrap = styled.div`
   &.invisible {
     opacity: 0;
+  }
+
+  h1 {
+    line-height: 1.3;
   }
 
   font-family: 'Titillium Web', sans-serif;

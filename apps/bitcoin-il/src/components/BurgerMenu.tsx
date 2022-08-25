@@ -34,6 +34,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({}) => {
   }, [location])
 
   const toggleBurger = () => {
+    if (burgerOpen) {
+    }
     setBurgerOpen(!burgerOpen)
   }
 
@@ -72,6 +74,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({}) => {
         style={{ height: `${bodyHeight + 60}px` }}
         className={`on-click-outside ${burgerOpen ? 'open' : 'closed'}`}
         onClick={() => {
+          console.log('YO')
           setBurgerOpen(false)
         }}
       />
@@ -227,7 +230,6 @@ const BurgerWrap = styled.div`
 
     .on-click-outside {
       position: absolute;
-      background: transparent;
       top: 60px;
       left: 0;
       width: 100vw;

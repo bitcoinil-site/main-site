@@ -35,7 +35,18 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
   }, [burgerOpen])
 
   const handleClickRoute = () => {
+    // setOpenKeys([])
+    closeAllDrawers()
     setBurgerOpen(false)
+  }
+
+  const closeAllDrawers = () => {
+    console.log(submenusReffed)
+    submenusReffed.forEach((ref) => {
+      console.log(ref)
+      ref.ref.style.height = '0'
+    })
+    setOpenKeys([])
   }
 
   const handleClickMainMenu = (key: string) => {

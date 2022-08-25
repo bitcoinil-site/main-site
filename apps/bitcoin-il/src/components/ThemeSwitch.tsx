@@ -1,10 +1,14 @@
 import { Divider } from 'antd'
 import * as React from 'react'
 import { DarkModeToggle } from 'react-dark-mode-toggle-2'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import styled from 'styled-components'
 
-import { isDarkModeState, showSystemThemeSwitch } from '../state/state'
+import {
+  isBurgerMenuOpenState,
+  isDarkModeState,
+  showSystemThemeSwitch
+} from '../state/state'
 import { useTheme } from '../theme'
 import { colors } from '../theme/colors'
 import { phoneDevices } from '../utils/breakpoints'
@@ -12,6 +16,8 @@ import { ThemeSwitchProps } from '../utils/interfaces'
 
 const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ isMobile }) => {
   const isShowSystem = useRecoilValue(showSystemThemeSwitch)
+
+  const [, setBugerOpen] = useRecoilState(isBurgerMenuOpenState)
 
   const [isSystem, setIsSystem] = React.useState(false)
 
@@ -41,6 +47,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ isMobile }) => {
           <DarkModeToggle
             onChange={() => {
               setIsSystem(!isSystem)
+              setBugerOpen(false)
               actions.toggleDarkMode()
             }}
             isDarkMode={isDark}
@@ -50,6 +57,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ isMobile }) => {
       ) : (
         <DarkModeToggle
           onChange={() => {
+            setBugerOpen(false)
             actions.toggleDarkMode()
           }}
           isDarkMode={isDark}
