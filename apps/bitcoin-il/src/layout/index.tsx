@@ -25,8 +25,20 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     isTooltipShownOnFormattedMessagesHover
   )
 
+  // const [initLoadDone, setInitLoadDone] = React.useState(false)
+
+  const [initLoadDone, setInitLoadDone] = React.useState(false)
+
+  document.onreadystatechange = () => {
+    // console.log('herehrjkerhkej')
+    setInitLoadDone(document.readyState === 'complete')
+  }
+
   React.useEffect(() => {
-    document.body.style.opacity = '0'
+    // document.body.style.opacity = '0'
+    // window.setTimeout(() => {
+    //   setInitLoadDone(true)
+    // }, 900)
   }, [])
   const location = useLocation()
 
@@ -78,7 +90,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   }, [location])
 
   return (
-    <AppStyleWrap id="app" className={ln.language === 'he' ? 'dir-rtl' : ''}>
+    <AppStyleWrap
+      id="app"
+      className={`${ln.language === 'he' ? 'dir-rtl' : ''} ${
+        initLoadDone ? '' : 'invisible'
+      }`}
+    >
       <Support />
       <Header />
       {isDevModeVisible ? <DevTools /> : null}
@@ -91,6 +108,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 export default AppLayout
 
 const AppStyleWrap = styled.div`
+  &.invisible {
+    opacity: 0;
+  }
+
   font-family: 'Titillium Web', sans-serif;
   font-weight: bolder;
   letter-spacing: 0.4px;
