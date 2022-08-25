@@ -30,15 +30,14 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const [initLoadDone, setInitLoadDone] = React.useState(false)
 
   document.onreadystatechange = () => {
-    // console.log('herehrjkerhkej')
     setInitLoadDone(document.readyState === 'complete')
   }
 
   React.useEffect(() => {
-    // document.body.style.opacity = '0'
-    // window.setTimeout(() => {
-    //   setInitLoadDone(true)
-    // }, 900)
+    document.body.style.opacity = '0'
+    window.setTimeout(() => {
+      document.body.style.opacity = '1'
+    }, 1100)
   }, [])
   const location = useLocation()
 
@@ -92,9 +91,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <AppStyleWrap
       id="app"
-      className={`${ln.language === 'he' ? 'dir-rtl' : ''} ${
-        initLoadDone ? '' : 'invisible'
-      }`}
+      className={`${ln.language === 'he' ? 'dir-rtl' : ''}`}
     >
       <Support />
       <Header />
@@ -108,10 +105,6 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 export default AppLayout
 
 const AppStyleWrap = styled.div`
-  &.invisible {
-    opacity: 0;
-  }
-
   font-family: 'Titillium Web', sans-serif;
   font-weight: bolder;
   letter-spacing: 0.4px;
