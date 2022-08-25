@@ -91,7 +91,9 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <AppStyleWrap
       id="app"
-      className={`${ln.language === 'he' ? 'dir-rtl' : ''}`}
+      className={`${ln.language === 'he' ? 'dir-rtl' : ''} ${
+        !initLoadDone ? 'invisible' : ''
+      }`}
     >
       <Support />
       <Header />
