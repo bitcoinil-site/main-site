@@ -38,7 +38,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     window.setTimeout(() => {
       document.body.style.opacity = '1'
     }, 1100)
+
+    return () => {
+      document.body.style.opacity = '0'
+    }
   }, [])
+
   const location = useLocation()
 
   const handleKeyDown = React.useCallback(
