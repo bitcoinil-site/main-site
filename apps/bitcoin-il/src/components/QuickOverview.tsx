@@ -77,11 +77,16 @@ const StyledQuickOverview = styled.div`
   width: 100%;
 
   .quick-overview {
-    padding-top: 150px;
+    padding-top: 200px;
     background-size: cover;
+
+    ${phoneDevices} {
+      padding-top: 400px;
+    }
   }
 
   .quick-overview-dark {
+    /* padding-top: 180px; */
     background: url(${OverviewBG}) top no-repeat;
     background-size: cover;
   }

@@ -24,10 +24,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const [, setHoverInfo] = useRecoilState(
     isTooltipShownOnFormattedMessagesHover
   )
-  document.body.style.opacity = '0'
 
-  React.useEffect(() => {}, [])
-
+  React.useEffect(() => {
+    document.body.style.opacity = '0'
+  }, [])
   const location = useLocation()
 
   const handleKeyDown = React.useCallback(
