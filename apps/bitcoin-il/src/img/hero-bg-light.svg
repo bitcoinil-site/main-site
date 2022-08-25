@@ -18,7 +18,7 @@
                                         <use xlink:href="#path-1"></use>
                                     </mask>
                                     <use id="Mask" fill="#c7d1de" xlink:href="#path-1"></use>
-                                    <g mask="url(#mask-2)" opacity="0.600000024" stroke="#3D3D3D">
+                                    <g mask="url(#mask-2)" opacity="0.600000024" stroke="#00b3f0">
                                         <g transform="translate(43.000000, -25.000000)">
                                             <polyline id="Path-4" points="0 149 215.597656 30 519.386719 78.8535156 813 128 1164 29 1514 5"></polyline>
                                             <polyline id="Path-3" points="0 149 47.328125 5.09765625 215.597656 29 291.480469 138 519.386719 78.8535156 674.890625 29 813 128 848 4.26325641e-14 1165 29 1467 149 1511.74609 23.0820313 1415.69922 23.0820313 1467 149"></polyline>
