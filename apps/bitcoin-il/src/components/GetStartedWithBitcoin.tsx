@@ -105,6 +105,9 @@ const StyledGetStartedWithBitcoin = styled.div`
     }
 
     &-body {
+      ${phoneDevices} {
+        text-align: center;
+      }
       &-top {
         display: flex;
         ${phoneDevices} {
@@ -120,6 +123,9 @@ const StyledGetStartedWithBitcoin = styled.div`
         }
         &-left {
           padding: 30px;
+          ${phoneDevices} {
+            width: 100vw;
+          }
 
           &-detail {
             img {

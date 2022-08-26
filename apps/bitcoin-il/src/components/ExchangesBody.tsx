@@ -90,6 +90,7 @@ const StyledExchangesBody = styled.div`
   .exchanges-warning {
     background: #fff9f3;
     padding: 60px;
+
     border: none;
     margin: auto;
     margin-top: 50px;
@@ -118,6 +119,14 @@ const StyledExchangesBody = styled.div`
 
     img {
       margin-right: 30px;
+
+      ${phoneDevices} {
+        margin-right: 0;
+      }
+    }
+
+    ${phoneDevices} {
+      padding: 10px;
     }
   }
 

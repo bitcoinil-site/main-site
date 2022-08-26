@@ -25,4 +25,6 @@ const HowItWorks: React.FC<HowItWorksProps> = ({}) => {
 
 export default HowItWorks
 
-const StyledHowItWorks = styled.div``
+const StyledHowItWorks = styled.div`
+  margin-bottom: 100px;
+`

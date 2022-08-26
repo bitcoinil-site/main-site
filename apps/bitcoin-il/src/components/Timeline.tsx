@@ -20,7 +20,7 @@ const Timeline: React.FC<TimelineCompProps> = ({ items }) => {
 
   return (
     <StyledTimelineComp id="TimelineComp">
-      <VerticalTimeline>
+      <VerticalTimeline animate={false}>
         {items.map((item: JSX.Element, i: number) => {
           return (
             <VerticalTimelineElement

@@ -54,6 +54,11 @@ const StyledAlternatingTwoColumnRow = styled.div`
     img {
       max-width: 75vw;
     }
+    img,
+    h1,
+    span {
+      padding-top: 50px;
+    }
   }
 
   &.even {
@@ -69,6 +74,10 @@ const StyledAlternatingTwoColumnRow = styled.div`
 
   .text-side {
     margin: 0 5em;
+
+    ${phoneDevices} {
+      margin: 0 1em;
+    }
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

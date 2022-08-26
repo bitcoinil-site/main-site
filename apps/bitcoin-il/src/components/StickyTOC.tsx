@@ -548,7 +548,7 @@ const StyledTableOfContentsScrollTracked = styled.div`
     grid-template-columns: [toc] 40% [body] 60%;
 
     ${phoneDevices} {
-      padding: 50px;
+      padding: 20px;
       display: flex;
     }
 
