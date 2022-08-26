@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import { innovationCards } from '../data/InnovationData'
 import { colors } from '../theme/colors'
+import { phoneDevices } from '../utils/breakpoints'
 import { InnovationBodyProps } from '../utils/interfaces'
 import CardsDisplay from './CardsDisplay'
 import { FormattedMessage } from './FormattedMessageWithHover'
@@ -22,23 +23,18 @@ const InnovationBody: React.FC<InnovationBodyProps> = ({}) => {
 
   return (
     <StyledInnovationBody id="IndividualsBody">
-      <Row>
-        <Col span={6} />
-        <Col span={12}>
-          <h2 className="individuals-body-main-title">
-            <FormattedMessage
-              id="innovation.why-clone.title"
-              defaultMessage="Why Clone?"
-            />
-          </h2>
-          {paragraphs.length > 0 &&
-            paragraphs.map(([key, value]) => (
-              <p key={key} className="individuals-body-p">
-                <FormattedMessage id={key} defaultMessage={value} />
-              </p>
-            ))}
-        </Col>
-      </Row>
+      <h2 className="individuals-body-main-title">
+        <FormattedMessage
+          id="innovation.why-clone.title"
+          defaultMessage="Why Clone?"
+        />
+      </h2>
+      {paragraphs.length > 0 &&
+        paragraphs.map(([key, value]) => (
+          <p key={key} className="individuals-body-p">
+            <FormattedMessage id={key} defaultMessage={value} />
+          </p>
+        ))}
       <hr />
       <CardsDisplay cards={innovationCards} />
     </StyledInnovationBody>
@@ -52,6 +48,16 @@ const StyledInnovationBody = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+
+  text-align: center;
+
+  ${phoneDevices} {
+    padding: 0 20px;
+  }
+
+  h2 {
+    margin-top: 50px;
+  }
 
   .individuals-body-main-title {
     span {

@@ -1,10 +1,15 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import styled from 'styled-components'
 
 import angle_black from '../img/ico_angle_black.svg'
 import angle_white from '../img/ico_angle_white.svg'
-import { isBurgerMenuOpenState, isDarkModeState } from '../state/state'
+import {
+  currentlySelectedLanguageState,
+  isBurgerMenuOpenState,
+  isDarkModeState
+} from '../state/state'
 import { colors } from '../theme/colors'
 import { BurgerMenuMenuProps, SubmenuRef } from '../utils/interfaces'
 import CustomNavLink from './CustomNavLink'
@@ -15,7 +20,9 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
   const [submenusReffed, setSubMenusReffed] = React.useState<SubmenuRef[]>([])
 
   const [burgerOpen, setBurgerOpen] = useRecoilState(isBurgerMenuOpenState)
+  const atomLang = useRecoilValue(currentlySelectedLanguageState)
 
+  const languageCode = atomLang.language === 'en' ? '' : `/${atomLang.language}`
   const isDarkMode = useRecoilValue(isDarkModeState)
 
   React.useEffect(() => {
@@ -41,9 +48,9 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
   }
 
   const closeAllDrawers = () => {
-    console.log(submenusReffed)
+    // console.log(submenusReffed)
     submenusReffed.forEach((ref) => {
-      console.log(ref)
+      // console.log(ref)
       ref.ref.style.height = '0'
     })
     setOpenKeys([])
@@ -78,6 +85,8 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
       setSubMenusReffed([...submenusReffed, { ref: ref, key: key }])
   }
 
+  const navigate = useNavigate()
+
   return (
     <StyledBurgerMenuMenu id="StyledBurgerMenuMenu">
       {items.map((mainItem, i) => {
@@ -97,9 +106,11 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
               className="burger-menu-title-label"
             >
               {!mainItem.submenu ? (
-                <CustomNavLink to={mainItem.key}>
+                // <CustomNavLink to={`${mainItem.key}`}>
+                <div
+                  onClick={() => navigate(`${languageCode}/${mainItem.key}`)}
+                >
                   <span>
-                    🏈🏈🏈
                     {mainItem.label}
                     <img
                       className={`arrow hidden-arrow ${
@@ -108,10 +119,10 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
                       src={angle_white}
                     />
                   </span>
-                </CustomNavLink>
+                </div>
               ) : (
+                // </CustomNavLink>
                 <span>
-                  💣️💣️💣️
                   {mainItem.label}
                   {mainItem.submenu ? (
                     <>
@@ -138,8 +149,13 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
                 {mainItem.submenu
                   ? mainItem.submenu.map((subItem, ii) => {
                       return (
+                        // <div style={{ background: 'blue' }}>
                         <span
-                          onClick={handleClickRoute}
+                          // onClick={handleClickRoute}
+                          onClick={() => {
+                            handleClickRoute()
+                            navigate(`${languageCode}/${subItem.key}`)
+                          }}
                           key={ii}
                           className={`burger-menu-title-submenu-label ${
                             isDarkMode
@@ -147,11 +163,11 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
                               : 'light-submenu-label'
                           }`}
                         >
-                          <CustomNavLink to={subItem.key}>
-                            🥩🥩🥩
-                            {subItem.label}
-                          </CustomNavLink>
+                          {/* <CustomNavLink to={subItem.key}> */}
+                          {subItem.label}
+                          {/* </CustomNavLink> */}
                         </span>
+                        // </div>
                       )
                     })
                   : null}

@@ -387,7 +387,7 @@ const StickyTOC: React.FC<StickyTOCProps> = ({
     // Left Side First
     <StyledTableOfContentsScrollTracked id="TableOfContentsScrollTracked">
       <div className="top-hitbox" ref={startRef} />
-      <div className={`mobile-toc ${isStuck ? 'mobile-toc-stuck' : ''}`}>
+      {/* <div className={`mobile-toc ${isStuck ? 'mobile-toc-stuck' : ''}`}>
         <StickyTOCBurger
           disabled={true}
           elInView={elInView}
@@ -407,7 +407,7 @@ const StickyTOC: React.FC<StickyTOCProps> = ({
             </span>
           }
         />
-      </div>
+      </div> */}
       <div className="scroll-track-toc-main">
         <div
           className={`toc-scroll-tracked-left ${
