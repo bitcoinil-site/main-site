@@ -99,6 +99,7 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
               {!mainItem.submenu ? (
                 <CustomNavLink to={mainItem.key}>
                   <span>
+                    🏈🏈🏈
                     {mainItem.label}
                     <img
                       className={`arrow hidden-arrow ${
@@ -110,6 +111,7 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
                 </CustomNavLink>
               ) : (
                 <span>
+                  💣️💣️💣️
                   {mainItem.label}
                   {mainItem.submenu ? (
                     <>
@@ -146,6 +148,7 @@ const BurgerMenuMenu: React.FC<BurgerMenuMenuProps> = ({ items }) => {
                           }`}
                         >
                           <CustomNavLink to={subItem.key}>
+                            🥩🥩🥩
                             {subItem.label}
                           </CustomNavLink>
                         </span>
