@@ -30,7 +30,6 @@ const CustomNavLink: React.FC<CustomNavLinkProps> = ({
 export default CustomNavLink
 
 const StyledCustomNavLink = styled(NavLink)`
-  width: 100vw;
   color: unset;
 
   &:hover {

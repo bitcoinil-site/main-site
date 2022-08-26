@@ -123,6 +123,7 @@ const StyledGetStartedWithBitcoin = styled.div`
         }
         &-left {
           padding: 30px;
+
           ${phoneDevices} {
             width: 100vw;
           }
